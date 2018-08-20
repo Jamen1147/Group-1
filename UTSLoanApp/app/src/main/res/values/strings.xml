@@ -1,0 +1,30 @@
+<resources>
+    <!--title-->
+    <string name="app_name">UTSLoanApp</string>
+    <string name="title_activity_student_login">StudentLoginActivity</string>
+    <string name="title_activity_logo_page">Welcome</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_staff_login">StaffLoginActivity</string>
+
+    <string name="student_loan_application">Student Loan Application</string>
+    <string name="student">Student</string>
+    <string name="staff">Staff</string>
+    <string name="logo">LOGO</string>
+    <string name="student_id">Student ID</string>
+    <string name="password">Password</string>
+    <string name="login_help">login help</string>
+    <string name="login">Login</string>
+
+    <!--error msg-->
+    <string name="id_empty_err_msg">ID must not be empty</string>
+    <string name="invalid_id_err_msg">ID must be in 8 digits</string>
+    <string name="password_empty_err_msg">Password must not be empty</string>
+    <string name="password_length_err_msg">Password must be > 6</string>
+    <string name="login_failed_err_msg">Login Failed, Please Try Again</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="staff_id">Staff ID</string>
+    <string name="no_access_to_staff_err_msg">You DO NOT have the access to Staff system</string>
+    <string name="no_access_to_Student_err_msg">You DO NOT have access to Student system</string>
+</resources>
