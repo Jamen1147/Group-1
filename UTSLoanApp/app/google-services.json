@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "390464663521",
+    "firebase_url": "https://utsloanapp.firebaseio.com",
+    "project_id": "utsloanapp",
+    "storage_bucket": "utsloanapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390464663521:android:fb79de44474250fb",
+        "android_client_info": {
+          "package_name": "com.sep.utsloanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390464663521-l4t2d3p6ujfmjlsllma4jtgjv3qkjdb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sep.utsloanapp",
+            "certificate_hash": "1fb8f725dce620d0c78ed43c9de2525272d16dbd"
+          }
+        },
+        {
+          "client_id": "390464663521-ii49nq9nsjntp7qqg5e7kff8nih19ovq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_UcdOBQ9XYhsjYD46tSF6-WU8skKnDVo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390464663521-ii49nq9nsjntp7qqg5e7kff8nih19ovq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
