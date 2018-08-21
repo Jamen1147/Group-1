@@ -52,7 +52,6 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
         mAuthHelper.removeAuthListener();
     }
 
-
     @Override
     public void checkType(Bundle extra) {
         if (extra != null){
@@ -73,7 +72,9 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
         if (mAuthHelper.getCurrentUser() != null) {
             mDatabaseHelper.retrieveData(new DatabaseHelper.OnGetDataListener() {
                 @Override
-                public void onStart() { }
+                public void onStart() {
+                    mView.onGetDataStart();
+                }
 
                 @Override
                 public void onSuccessful(DataSnapshot dataSnapshot) {

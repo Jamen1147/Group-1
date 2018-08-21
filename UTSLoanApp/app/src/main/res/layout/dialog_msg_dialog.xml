@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/text_view_boarder">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/colorLightBlue"
+        android:textStyle="bold"
+        android:text="@string/login_help_text"
+        android:layout_alignParentTop="true"
+        android:id="@+id/msg_dialog_tv"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/msg_dialog_tv"
+            android:text="@string/ok_button_text"
+            android:background="@drawable/text_view_boarder"
+            android:id="@+id/msg_dialog_ok_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="15dp"/>
+
+</RelativeLayout>

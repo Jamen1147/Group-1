@@ -17,6 +17,9 @@ public interface MainActivityContract {
 
         //show err msg and then logout the user
         void onGetDataFailed(DatabaseError databaseError);
+
+        //show progressbar
+        void onGetDataStart();
     }
 
     interface Presenter extends BasePresenter{

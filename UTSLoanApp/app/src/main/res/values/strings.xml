@@ -1,10 +1,10 @@
 <resources>
     <!--title-->
     <string name="app_name">UTSLoanApp</string>
-    <string name="title_activity_student_login">StudentLoginActivity</string>
+    <string name="title_activity_student_login">Student Login</string>
     <string name="title_activity_logo_page">Welcome</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_staff_login">StaffLoginActivity</string>
+    <string name="title_activity_main">Welcome</string>
+    <string name="title_activity_staff_login">Staff Login</string>
 
     <string name="student_loan_application">Student Loan Application</string>
     <string name="student">Student</string>
@@ -19,7 +19,7 @@
     <string name="id_empty_err_msg">ID must not be empty</string>
     <string name="invalid_id_err_msg">ID must be in 8 digits</string>
     <string name="password_empty_err_msg">Password must not be empty</string>
-    <string name="password_length_err_msg">Password must be > 6</string>
+    <string name="password_length_err_msg">Length of the password must be between 6 to 20</string>
     <string name="login_failed_err_msg">Login Failed, Please Try Again</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -27,4 +27,7 @@
     <string name="staff_id">Staff ID</string>
     <string name="no_access_to_staff_err_msg">You DO NOT have the access to Staff system</string>
     <string name="no_access_to_Student_err_msg">You DO NOT have access to Student system</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="login_help_text">For login problems, \n please direct to UTS Online</string>
+    <string name="ok_button_text">OK</string>
 </resources>
