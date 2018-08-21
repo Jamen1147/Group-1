@@ -2,7 +2,6 @@ package com.sep.utsloanapp.activities.staffLoginActivity;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

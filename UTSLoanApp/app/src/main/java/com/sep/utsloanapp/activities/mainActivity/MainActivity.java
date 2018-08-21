@@ -104,11 +104,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void showStudent() {
+        mProgressBar.setVisibility(View.GONE);
         showStudentFragment();
     }
 
     @Override
     public void showStaff() {
+        mProgressBar.setVisibility(View.GONE);
         showStaffFragment();
     }
 
@@ -117,5 +119,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         databaseError.toException().printStackTrace();
         Utils.showMsg(this, "Re-Directing Failed, Please Login Again");
         mPresenter.logout();
+    }
+
+    @Override
+    public void onGetDataStart() {
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 }

@@ -1,9 +1,11 @@
 package com.sep.utsloanapp.activities.staffLoginActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -86,7 +88,9 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
             doLogin();
         }
         if (view == mLoginHelpTv){
-            //dialog to tell the user to go to UTS online
+            Utils.showDialog(this,
+                    getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.login_help_text));
         }
     }
 

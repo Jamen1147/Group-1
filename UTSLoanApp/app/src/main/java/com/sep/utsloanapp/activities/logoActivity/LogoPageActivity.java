@@ -42,6 +42,7 @@ public class LogoPageActivity extends AppCompatActivity implements View.OnClickL
         if (view == mStudentBtn){
             startActivity(new Intent(this, StudentLoginActivity.class));
         }
+        
         if (view == mStaffBtn){
             startActivity(new Intent(this, StaffLoginActivity.class));
         }

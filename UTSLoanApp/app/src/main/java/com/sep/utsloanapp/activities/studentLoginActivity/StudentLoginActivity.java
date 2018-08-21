@@ -74,7 +74,9 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
             doLogin();
         }
         if (view == mLoginHelpTv){
-            //dialog to tell the user to go to UTS online
+            Utils.showDialog(this,
+                    getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.login_help_text));
         }
     }
 
