@@ -1,29 +1,20 @@
 package com.sep.utsloanapp.activities.staffLoginActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.mainActivity.MainActivity;
 import com.sep.utsloanapp.activities.utils.Utils;
-import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
 
 public class StaffLoginActivity extends AppCompatActivity implements StaffLoginContract.View,
         View.OnClickListener{
@@ -88,7 +79,7 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
             doLogin();
         }
         if (view == mLoginHelpTv){
-            Utils.showDialog(this,
+            Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
                     getResources().getString(R.string.login_help_text));
         }
