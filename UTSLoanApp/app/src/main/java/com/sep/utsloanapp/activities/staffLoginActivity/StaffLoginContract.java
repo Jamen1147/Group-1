@@ -28,6 +28,7 @@ public interface StaffLoginContract {
         //Right type of user, go to the next activity.
         void onGetDataSuccessfulUserStaff();
 
+        //print trace
         void onGetDataFailed(DatabaseError databaseError);
 
         //first time login, no type to check, write type = staff
