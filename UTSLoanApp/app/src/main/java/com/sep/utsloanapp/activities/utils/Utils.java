@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.sep.utsloanapp.R;
 
+import java.lang.invoke.MethodHandle;
+import java.util.concurrent.Callable;
+
 public class Utils {
 
     /**
@@ -44,7 +47,7 @@ public class Utils {
     /**
      * Show a simple alert dialog.
      */
-    public static void showDialog(Context context, View view, String msg){
+    public static void showMsgDialog(Context context, View view, String msg){
         AlertDialog.Builder ab = new AlertDialog.Builder(context);
         ab.setView(view);
         final Dialog dialog = ab.create();
@@ -60,5 +63,48 @@ public class Utils {
                 dialog.dismiss();
             }
         });
+    }
+
+    /**
+     * Show a confirm dialog.
+     * Pass in: context, view, confirm msg, cancel button msg, confirm button msg,
+     * and a callable to handle the confirm button click event.
+     */
+    public static void showConfirmDialog(Context context, View view, String confirmMsg,
+                                         String cancelBtnMsg, String confirmBtnMsg,
+                                         final Callable<Void> method){
+
+        AlertDialog.Builder ab = new AlertDialog.Builder(context);
+        ab.setView(view);
+        final Dialog dialog = ab.create();
+        dialog.show();
+
+        TextView textView = view.findViewById(R.id.dialog_confirm_dialog_confirm_msg_tv);
+        textView.setText(confirmMsg);
+
+        Button cancelBtn = view.findViewById(R.id.dialog_confirm_dialog_cancel_btn);
+        cancelBtn.setText(cancelBtnMsg);
+
+        Button confirmBtn = view.findViewById(R.id.dialog_confirm_dialog_confirm_btn);
+        confirmBtn.setText(confirmBtnMsg);
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    method.call();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 }

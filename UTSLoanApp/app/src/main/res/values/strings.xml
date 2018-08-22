@@ -30,4 +30,11 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="login_help_text">For login problems, \n please direct to UTS Online</string>
     <string name="ok_button_text">OK</string>
+    <string name="logout">Logout</string>
+    <string name="confirm_msg">Please confirm</string>
+    <string name="cancel_msg">Cancel</string>
+    <string name="confirm_btn_msg">Confirm</string>
+    <string name="want_to_sign_out">Want to sign out?</string>
+    <string name="get_me_back">Get me back</string>
+    <string name="sign_me_out">Sign me out</string>
 </resources>

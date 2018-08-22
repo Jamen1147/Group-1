@@ -4,12 +4,13 @@ Project
 ---
  - UTS Student Loan Application System
 
-Members
+Members & Tutor
 ---
-- Junwen Huang
-- Antonio Wang
-- Yifu Li
-- Yifei Shen
+- Junwen Huang - 99159624
+- Antonio Wang - 12972042
+- Yifu Li - 12161790
+- Yifei Shen - 12083111
+- Ayman Ahmed Elgharabawy - Tutor
 
 Architecture
 ---

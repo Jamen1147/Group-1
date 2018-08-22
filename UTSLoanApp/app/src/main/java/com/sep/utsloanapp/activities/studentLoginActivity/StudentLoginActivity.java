@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,7 +73,7 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
             doLogin();
         }
         if (view == mLoginHelpTv){
-            Utils.showDialog(this,
+            Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
                     getResources().getString(R.string.login_help_text));
         }
