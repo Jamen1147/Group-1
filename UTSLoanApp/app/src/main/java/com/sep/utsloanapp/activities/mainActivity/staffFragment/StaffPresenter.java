@@ -9,12 +9,12 @@ public class StaffPresenter implements StaffContract.Presenter{
 
     private StaffContract.View mView;
     private Context mContext;
-    private AuthHelper mAuthHelper;
 
     public StaffPresenter(Context context, StaffContract.View view){
 
         mContext = context;
         mView = view;
+        mView.setPresenter(this);
 
     }
 

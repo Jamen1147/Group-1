@@ -71,6 +71,7 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
         if (mAuthHelper.getCurrentUser() != null){
             uid = mAuthHelper.getUid();
         }
+
         User user = new User(studentId, uid, mContext.getString(R.string.student));
         mDatabaseHelper.saveUser(user);
     }
