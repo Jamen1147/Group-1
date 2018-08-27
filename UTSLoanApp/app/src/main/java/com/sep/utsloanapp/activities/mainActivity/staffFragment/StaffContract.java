@@ -11,6 +11,9 @@ public interface StaffContract {
 
     interface Presenter extends BasePresenter{
 
+        //logout the user
+        void logout();
+
     }
 
 }

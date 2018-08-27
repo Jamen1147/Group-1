@@ -37,4 +37,9 @@
     <string name="want_to_sign_out">Want to sign out?</string>
     <string name="get_me_back">Get me back</string>
     <string name="sign_me_out">Sign me out</string>
+    <string name="create_form">Create Form</string>
+    <string name="my_forms">My Forms</string>
+    <string name="guidance">Guidance</string>
+    <string name="application_forms">Application Forms</string>
+    <string name="my_reviewing_forms">My Reviewing Forms</string>
 </resources>
