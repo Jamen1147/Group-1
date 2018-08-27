@@ -3,12 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".activities.mainActivity.staffFragment.StaffFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="30dp"
+            android:text="Submitted Forms"
+            android:gravity="center_vertical |center_horizontal"
+            android:textColor="@color/colorLightBlue"
+            android:background="@drawable/text_view_rounded"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/staff_frament_submitted_application_tv"
+            android:layout_above="@+id/staff_frament_middle_layer_tv"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorLightBlue"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/staff_frament_middle_layer_tv"
+            />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="30dp"
+            android:text="My Reviewing Forms"
+            android:gravity="center_vertical |center_horizontal"
+            android:textColor="@color/colorLightBlue"
+            android:background="@drawable/text_view_rounded"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/staff_frament_reviewed_application_tv"
+            android:layout_below="@+id/staff_frament_middle_layer_tv"
+            />
+
+    </RelativeLayout>
+
 
 </FrameLayout>
