@@ -3,20 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".activities.mainActivity.staffFragment.StaffFragment">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        >
 
         <TextView
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="30dp"
-            android:text="Submitted Forms"
+            android:textSize="30sp"
+            android:text="@string/application_forms"
             android:gravity="center_vertical |center_horizontal"
             android:textColor="@color/colorLightBlue"
             android:background="@drawable/text_view_rounded"
@@ -38,8 +39,8 @@
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="30dp"
-            android:text="My Reviewing Forms"
+            android:textSize="30sp"
+            android:text="@string/my_reviewing_forms"
             android:gravity="center_vertical |center_horizontal"
             android:textColor="@color/colorLightBlue"
             android:background="@drawable/text_view_rounded"
