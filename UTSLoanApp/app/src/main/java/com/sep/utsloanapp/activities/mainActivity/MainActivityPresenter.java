@@ -2,14 +2,12 @@ package com.sep.utsloanapp.activities.mainActivity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
@@ -37,8 +35,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
             }
         });
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child(DatabaseHelper.KEY_DB_USER);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         mDatabaseHelper = new DatabaseHelper(reference);
     }
 
@@ -68,9 +65,8 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
 
     @Override
     public void checkType() {
-        final String[] userType = {""};
         if (mAuthHelper.getCurrentUser() != null) {
-            mDatabaseHelper.retrieveData(new DatabaseHelper.OnGetDataListener() {
+            mDatabaseHelper.retrieveUserData(new DatabaseHelper.OnGetDataListener() {
                 @Override
                 public void onStart() {
                     mView.onGetDataStart();
@@ -82,20 +78,16 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         User user = ds.getValue(User.class);
                         if (user != null) {
-                            String uidd = user.getUid();
                             if (user.getUid().equals(uid)) {
-                                userType[0] = user.getUserType();
-                                if (userType[0].equals(mContext.getString(R.string.student))){
+                                int userType = user.getUserType();
+                                if (userType == 0){
                                     mView.showStudent();
                                     return;
                                 }else {
                                     mView.showStaff();
                                     return;
                                 }
-                            }else {
-                                //not the one looking for
                             }
-                        }else {
                         }
                     }
                 }
