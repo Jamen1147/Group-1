@@ -5,9 +5,7 @@ import com.sep.utsloanapp.activities.utils.BasePresenter;
 import com.sep.utsloanapp.activities.utils.BaseView;
 
 public interface StaffLoginContract {
-
     interface View extends BaseView<Presenter> {
-
         //This is called if login input invalid, set error msg
         //to the corresponding EditText.
         void loginInputInvalid(String errorMessage);
@@ -33,7 +31,6 @@ public interface StaffLoginContract {
 
         //first time login, no type to check, write type = staff
         void onGetFirstTimeUser();
-
     }
 
     interface Presenter extends BasePresenter {
