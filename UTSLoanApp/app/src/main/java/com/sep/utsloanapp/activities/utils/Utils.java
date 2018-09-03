@@ -99,6 +99,7 @@ public class Utils {
             @Override
             public void onClick(View view) {
                 try {
+                    dialog.dismiss();
                     method.call();
                 } catch (Exception e) {
                     e.printStackTrace();

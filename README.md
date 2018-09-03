@@ -10,6 +10,7 @@ Members & Tutor
 - Antonio Wang - 12972042
 - Yifu Li - 12161790
 - Yifei Shen - 12083111
+- Mathew Lo -
 - Ayman Ahmed Elgharabawy - Tutor
 
 Architecture
@@ -20,10 +21,11 @@ Architecture
 
 Tasks Assignments & Responsibilities
 ---
-- Junwen (Architecture design and the building-up of the entire architecture, some Model and Presenter coding and Firebase coding)
-- Yifu (View coding)
-- Aotonio (XML and UI related coding)
-- YIfei (Presenter coding)
+- Junwen - Architecture design and the building-up of the entire architecture, some Model and Presenter coding and Firebase coding
+- Yifu - View coding
+- Aotonio - XML and UI related coding
+- Mathew Lo - XML and UI related coding
+- Yifei - Presenter coding
 
 Instruction & Example
 ---
