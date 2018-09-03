@@ -13,6 +13,7 @@ import com.sep.utsloanapp.activities.studentLoginActivity.StudentLoginPresenter;
 import com.sep.utsloanapp.activities.utils.Utils;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
+import com.sep.utsloanapp.models.Staff;
 import com.sep.utsloanapp.models.User;
 
 public class StaffLoginPresenter implements StaffLoginContract.Presenter {
@@ -29,8 +30,7 @@ public class StaffLoginPresenter implements StaffLoginContract.Presenter {
         mView.setPresenter(this);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child(DatabaseHelper.KEY_DB_USER);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
         mAuthHelper = new AuthHelper(firebaseAuth);
         mDatabaseHelper = new DatabaseHelper(reference);
@@ -73,15 +73,19 @@ public class StaffLoginPresenter implements StaffLoginContract.Presenter {
         if (mAuthHelper.getCurrentUser() != null){
             uid = mAuthHelper.getUid();
         }
-        User user = new User(staffId, uid, mContext.getString(R.string.staff));
-        mDatabaseHelper.saveUser(user);
+
+        User user = new User(staffId, uid, 1);
+        Staff staff = new Staff(uid, "Six", "Lee", "666666@uts.edu.au", "0412666666", "1966-06-06",
+                "2006-06-06", Integer.valueOf(staffId), 0, 66);
+
+        mDatabaseHelper.saveObject(user);
+        mDatabaseHelper.saveObject(staff);
     }
 
     @Override
     public void checkType() {
-        final String[] userType = {""};
         if (mAuthHelper.getCurrentUser() != null) {
-            mDatabaseHelper.retrieveData(new DatabaseHelper.OnGetDataListener() {
+            mDatabaseHelper.retrieveUserData(new DatabaseHelper.OnGetDataListener() {
                 @Override
                 public void onStart() {
 
@@ -92,10 +96,9 @@ public class StaffLoginPresenter implements StaffLoginContract.Presenter {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         User user = ds.getValue(User.class);
                         if (user != null) {
-                            String uidd = user.getUid();
                             if (user.getUid().equals(uid)) {
-                                userType[0] = user.getUserType();
-                                if (userType[0].equals(mContext.getString(R.string.student))){
+                                int userType = user.getUserType();
+                                if (userType == 0){
                                     mAuthHelper.logOutUser();
                                     mView.onGetDataSuccessfulUserStudent();
                                     return;
@@ -106,12 +109,9 @@ public class StaffLoginPresenter implements StaffLoginContract.Presenter {
                             }else {
                                 //not the one looking for
                             }
-                        }else {
-                            //means first time user. ? do save user.
-                            mView.onGetFirstTimeUser();
-                            return;
                         }
                     }
+                    mView.onGetFirstTimeUser();
                 }
                 @Override
                 public void onFailed(DatabaseError databaseError) {

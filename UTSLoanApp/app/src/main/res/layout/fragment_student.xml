@@ -5,10 +5,55 @@
     android:layout_height="match_parent"
     tools:context=".activities.mainActivity.studentFragment.StudentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="student" />
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="30sp"
+            android:text="@string/create_form"
+            android:gravity="center_vertical |center_horizontal"
+            android:textColor="@color/colorLightBlue"
+            android:background="@drawable/text_view_rounded"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/student_fragment_creation_application_tv"
+            android:layout_above="@+id/student_fragment_my_application_tv"
+            />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="30sp"
+            android:text="@string/my_forms"
+            android:gravity="center_vertical |center_horizontal"
+            android:textColor="@color/colorLightBlue"
+            android:background="@drawable/text_view_rounded"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/student_fragment_my_application_tv"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="30sp"
+            android:text="@string/guidance"
+            android:gravity="center_vertical |center_horizontal"
+            android:textColor="@color/colorLightBlue"
+            android:background="@drawable/text_view_rounded"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/student_fragment_guidance_tv"
+            android:layout_below="@+id/student_fragment_my_application_tv"
+            />
+
+    </RelativeLayout>
 
 </FrameLayout>
