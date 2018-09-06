@@ -106,7 +106,6 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
 
     @Override
     public void onLoginSuccessful() {
-        Log.d("Tag----------", "LoginSuccessful");
         mPresenter.checkType();
     }
 
