@@ -1,12 +1,22 @@
 package com.sep.utsloanapp.models;
 
+import android.util.Log;
+
+/**
+ * Model class that forms the User Object.
+ * Descriptions for unclear attributes below.
+ * -----------------------------------------
+ * UserType - 0 Student, 1 Staff
+ * -----------------------------------------
+ * */
 public class User {
-    private String mUTSId, mUid, mUserType;
+    private String mUTSId, mUid;
+    private int mUserType;
 
     /**
      * Contructor that requires email and uid to build up a user
      * */
-    public User(String UTSId, String uid, String userType) {
+    public User(String UTSId, String uid, int userType) {
         mUTSId = UTSId;
         mUid = uid;
         mUserType = userType;
@@ -26,7 +36,7 @@ public class User {
         mUid = uid;
     }
 
-    public String getUserType() {
+    public int getUserType() {
         return mUserType;
     }
 
@@ -38,7 +48,7 @@ public class User {
         mUTSId = UTSId;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(int userType) {
         mUserType = userType;
     }
 }

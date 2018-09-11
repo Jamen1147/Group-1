@@ -7,7 +7,6 @@ import com.sep.utsloanapp.activities.utils.BaseView;
 public interface StudentLoginContract {
 
     interface View extends BaseView<Presenter> {
-
         //This is called if login input invalid, set error msg
         //to the corresponding EditText.
         void loginInputInvalid(String errorMessage);
