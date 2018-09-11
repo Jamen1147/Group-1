@@ -13,6 +13,7 @@ import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.utils.Utils;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
+import com.sep.utsloanapp.models.Student;
 import com.sep.utsloanapp.models.User;
 
 public class StudentLoginPresenter implements StudentLoginContract.Presenter{
@@ -33,8 +34,7 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         mAuthHelper = new AuthHelper(firebaseAuth);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child(DatabaseHelper.KEY_DB_USER);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         mDatabaseHelper = new DatabaseHelper(reference);
     }
 
@@ -72,15 +72,20 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
             uid = mAuthHelper.getUid();
         }
 
-        User user = new User(studentId, uid, mContext.getString(R.string.student));
-        mDatabaseHelper.saveUser(user);
+        User user = new User(studentId, uid, 0);
+        Student student = new Student(uid, "Antonio", "Wang", "Antonio.Wang-1@student.uts.edu.au",
+                "0412417417", "2001-02-27", "Science in Information Technology",
+                "Enterprise Software Development", "Information Technology and Engineering",
+                "Bachelor", "Australian", Integer.valueOf(studentId), 0, 3);
+
+        mDatabaseHelper.saveObject(user);
+        mDatabaseHelper.saveObject(student);
     }
 
     @Override
     public void checkType() {
-        final String[] userType = {""};
         if (mAuthHelper.getCurrentUser() != null) {
-            mDatabaseHelper.retrieveData(new DatabaseHelper.OnGetDataListener() {
+            mDatabaseHelper.retrieveUserData(new DatabaseHelper.OnGetDataListener() {
                 @Override
                 public void onStart() {
 
@@ -92,8 +97,8 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
                         User user = ds.getValue(User.class);
                         if (user != null) {
                             if (user.getUid().equals(uid)) {
-                                userType[0] = user.getUserType();
-                                if (userType[0].equals(mContext.getString(R.string.student))){
+                                int userType = user.getUserType();
+                                if (userType == 0){
                                     mView.onGetDataSuccessfulUserStudent();
                                     return;
                                 }else {
@@ -104,14 +109,10 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
                             }else {
                                 //not the one looking for
                             }
-                        }else {
-                            //no user exist
-                            Log.d("Tag", "user == null");
-                            //means first time user. ? do save user.
-                            mView.onGetFirstTimeUser();
-                            return;
                         }
                     }
+                    //not found inside the loop, meaning that it is the first time user.
+                    mView.onGetFirstTimeUser();
                 }
                 @Override
                 public void onFailed(DatabaseError databaseError) {
