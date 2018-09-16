@@ -10,20 +10,23 @@ package com.sep.utsloanapp.models;
  * Status - "Submitted", "Processing", "Approved or Rejected"
  * -----------------------------------------
  * */
+
 public class Application {
 
     private String mApplicationId, mTimeSubmitted, mTimeDeclared, mStatus, mAmount, mUsage,
-            mOtherUsage, mRejectReason;
+            mLoanPeriodYear, mRepaymentPeriodMonth, mOtherUsage, mRejectReason, mBankBsb,
+            mBankAccount, mStudentUid, mStaffUid;
 
-    private int mStudentId, mStaffId, mLoanPeriodYear, mRepaymentPeriodMonth, mResult;
+    private int mResult;
 
     public Application() {
     }
 
     public Application(String applicationId, String timeSubmitted, String timeDeclared,
-                       String status, String amount, String usage, String otherUsage,
-                       String rejectReason, int studentId, int staffId, int loanPeriodYear,
-                       int repaymentPeriodMonth, int result) {
+                       String status, String amount, String usage, String loanPeriodYear,
+                       String repaymentPeriodMonth, String otherUsage,
+                       String rejectReason, String bankBsb, String bankAccount,
+                       String studentUid, String staffUid, int result) {
 
         mApplicationId = applicationId;
         mTimeSubmitted = timeSubmitted;
@@ -33,12 +36,44 @@ public class Application {
         mUsage = usage;
         mOtherUsage = otherUsage;
         mRejectReason = rejectReason;
-        mStudentId = studentId;
-        mStaffId = staffId;
         mLoanPeriodYear = loanPeriodYear;
         mRepaymentPeriodMonth = repaymentPeriodMonth;
         mResult = result;
+        mBankAccount = bankAccount;
+        mBankBsb = bankBsb;
 
+    }
+
+    public String getStudentUid() {
+        return mStudentUid;
+    }
+
+    public void setStudentUid(String studentUid) {
+        mStudentUid = studentUid;
+    }
+
+    public String getStaffUid() {
+        return mStaffUid;
+    }
+
+    public void setStaffUid(String staffUid) {
+        mStaffUid = staffUid;
+    }
+
+    public String getBankBsb() {
+        return mBankBsb;
+    }
+
+    public void setBankBsb(String bankBsb) {
+        mBankBsb = bankBsb;
+    }
+
+    public String getBankAccount() {
+        return mBankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        mBankAccount = bankAccount;
     }
 
     public String getApplicationId() {
@@ -105,35 +140,19 @@ public class Application {
         mRejectReason = rejectReason;
     }
 
-    public int getStudentId() {
-        return mStudentId;
-    }
-
-    public void setStudentId(int studentId) {
-        mStudentId = studentId;
-    }
-
-    public int getStaffId() {
-        return mStaffId;
-    }
-
-    public void setStaffId(int staffId) {
-        mStaffId = staffId;
-    }
-
-    public int getLoanPeriodYear() {
+    public String getLoanPeriodYear() {
         return mLoanPeriodYear;
     }
 
-    public void setLoanPeriodYear(int loanPeriodYear) {
+    public void setLoanPeriodYear(String loanPeriodYear) {
         mLoanPeriodYear = loanPeriodYear;
     }
 
-    public int getRepaymentPeriodMonth() {
+    public String getRepaymentPeriodMonth() {
         return mRepaymentPeriodMonth;
     }
 
-    public void setRepaymentPeriodMonth(int repaymentPeriodMonth) {
+    public void setRepaymentPeriodMonth(String repaymentPeriodMonth) {
         mRepaymentPeriodMonth = repaymentPeriodMonth;
     }
 

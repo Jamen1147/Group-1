@@ -5,15 +5,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.sep.utsloanapp.models.Application;
 import com.sep.utsloanapp.models.Staff;
 import com.sep.utsloanapp.models.Student;
 import com.sep.utsloanapp.models.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseHelper {
 
     public static final String KEY_DB_USER = "users";
     public static final String KEY_DB_STAFF = "staff";
     public static final String KEY_DB_STUDENT = "students";
+    public static final String KEY_DB_APPLICATION = "applications";
 
     private DatabaseReference mReference;
 
@@ -32,6 +37,36 @@ public class DatabaseHelper {
     public void retrieveUserData(final OnGetDataListener listener) {
         listener.onStart();
         mReference.child(KEY_DB_USER).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listener.onSuccessful(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onFailed(databaseError);
+            }
+        });
+    }
+
+    public void retrieveStudentData(final OnGetDataListener listener) {
+        listener.onStart();
+        mReference.child(KEY_DB_STUDENT).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listener.onSuccessful(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onFailed(databaseError);
+            }
+        });
+    }
+
+    public void retrieveApplicationData(final OnGetDataListener listener) {
+        listener.onStart();
+        mReference.child(KEY_DB_APPLICATION).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listener.onSuccessful(dataSnapshot);
@@ -81,6 +116,36 @@ public class DatabaseHelper {
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Method that takes a User as a parameter then store it into the database in the following
+     * directory - users/uid/..
+     * */
+    public void saveObject(Application application) {
+        try {
+            String applicationId = application.getApplicationId();
+            mReference.child(KEY_DB_APPLICATION).child(applicationId).setValue(application);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateUserAvailability(String uid, int availableValue) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("available", availableValue);
+
+        try {
+            mReference.child(KEY_DB_USER).child(uid).updateChildren(map);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String pushKey(){
+        return mReference.push().getKey();
     }
 
     /**

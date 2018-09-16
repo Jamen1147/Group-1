@@ -22,7 +22,7 @@ public interface StudentLoginContract {
         void onLoginFailed();
 
         //wrong type of user, stop it.
-        void onGetDataSuccessfulUserStudent();
+        void onGetDataSuccessfulUserStudent(int userType);
 
         //Right type of user, go to the next activity.
         void onGetDataSuccessfulUserStaff();

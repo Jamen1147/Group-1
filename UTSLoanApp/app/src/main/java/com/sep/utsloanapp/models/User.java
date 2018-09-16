@@ -7,19 +7,22 @@ import android.util.Log;
  * Descriptions for unclear attributes below.
  * -----------------------------------------
  * UserType - 0 Student, 1 Staff
+ * Available - if the student is current available to create another application form
+ * ----------- 0 not available, 1 available
  * -----------------------------------------
  * */
 public class User {
     private String mUTSId, mUid;
-    private int mUserType;
+    private int mUserType, mAvailable;
 
     /**
      * Contructor that requires email and uid to build up a user
      * */
-    public User(String UTSId, String uid, int userType) {
+    public User(String UTSId, String uid, int userType, int available) {
         mUTSId = UTSId;
         mUid = uid;
         mUserType = userType;
+        mAvailable = available;
     }
 
     public User(){}
@@ -30,6 +33,14 @@ public class User {
 
     public String getUid() {
         return mUid;
+    }
+
+    public int getAvailable() {
+        return mAvailable;
+    }
+
+    public void setAvailable(int available) {
+        mAvailable = available;
     }
 
     public void setUid(String uid) {

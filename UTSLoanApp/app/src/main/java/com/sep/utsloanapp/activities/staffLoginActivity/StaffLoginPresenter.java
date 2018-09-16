@@ -74,7 +74,7 @@ public class StaffLoginPresenter implements StaffLoginContract.Presenter {
             uid = mAuthHelper.getUid();
         }
 
-        User user = new User(staffId, uid, 1);
+        User user = new User(staffId, uid, 1, 1);
         Staff staff = new Staff(uid, "Six", "Lee", "666666@uts.edu.au", "0412666666", "1966-06-06",
                 "2006-06-06", Integer.valueOf(staffId), 0, 66);
 
@@ -103,7 +103,7 @@ public class StaffLoginPresenter implements StaffLoginContract.Presenter {
                                     mView.onGetDataSuccessfulUserStudent();
                                     return;
                                 }else {
-                                    mView.onGetDataSuccessfulUserStaff();
+                                    mView.onGetDataSuccessfulUserStaff(userType);
                                     return;
                                 }
                             }else {

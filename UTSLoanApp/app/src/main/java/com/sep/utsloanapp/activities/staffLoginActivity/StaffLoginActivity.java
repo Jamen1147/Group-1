@@ -27,7 +27,7 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
     private ProgressBar mProgressBar;
     private String mStaffId, mPassword;
 
-    public static final int STAFF_VAL = 0;
+    public static final int STAFF_VAL = 1;
     public static final String TYPE_KEY = "typeKey";
 
     @Override
@@ -127,10 +127,10 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
     }
 
     @Override
-    public void onGetDataSuccessfulUserStaff() {
+    public void onGetDataSuccessfulUserStaff(int userType) {
         mProgressBar.setVisibility(View.GONE);
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra(TYPE_KEY , STAFF_VAL);
+        i.putExtra(TYPE_KEY , userType);
         startActivity(i);
         finish();
     }

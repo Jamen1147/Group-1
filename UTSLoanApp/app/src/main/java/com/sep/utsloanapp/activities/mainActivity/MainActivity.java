@@ -20,6 +20,7 @@ import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.logoActivity.LogoPageActivity;
 import com.sep.utsloanapp.activities.mainActivity.staffFragment.StaffFragment;
 import com.sep.utsloanapp.activities.mainActivity.studentFragment.StudentFragment;
+import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
 import com.sep.utsloanapp.activities.utils.Utils;
 
 import java.util.concurrent.Callable;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     public static final String STUDENT_FRAGMENT = "student_frag";
     public static final String STAFF_FRAGMENT = "staff_frag";
+    public static final String AVAILABILITY_KEY = "availabilityKey";
 
     private MainActivityContract.Presenter mPresenter;
 
