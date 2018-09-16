@@ -24,7 +24,7 @@ public interface StaffLoginContract {
         void onGetDataSuccessfulUserStudent();
 
         //Right type of user, go to the next activity.
-        void onGetDataSuccessfulUserStaff();
+        void onGetDataSuccessfulUserStaff(int userType);
 
         //print trace
         void onGetDataFailed(DatabaseError databaseError);

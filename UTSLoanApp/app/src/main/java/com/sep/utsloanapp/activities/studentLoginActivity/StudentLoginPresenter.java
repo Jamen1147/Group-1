@@ -72,7 +72,7 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
             uid = mAuthHelper.getUid();
         }
 
-        User user = new User(studentId, uid, 0);
+        User user = new User(studentId, uid, 0, 1);
         Student student = new Student(uid, "Antonio", "Wang", "Antonio.Wang-1@student.uts.edu.au",
                 "0412417417", "2001-02-27", "Science in Information Technology",
                 "Enterprise Software Development", "Information Technology and Engineering",
@@ -99,7 +99,7 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
                             if (user.getUid().equals(uid)) {
                                 int userType = user.getUserType();
                                 if (userType == 0){
-                                    mView.onGetDataSuccessfulUserStudent();
+                                    mView.onGetDataSuccessfulUserStudent(userType);
                                     return;
                                 }else {
                                     mAuthHelper.logOutUser();

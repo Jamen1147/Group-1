@@ -28,7 +28,7 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
 
     private StudentLoginContract.Presenter mPresenter;
 
-    public static final int STUDENT_VAL = 1;
+    public static final int STUDENT_VAL = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,6 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
 
     @Override
     public void onLoginSuccessful() {
-        Log.d("Tag----------", "LoginSuccessful");
         mPresenter.checkType();
     }
 
@@ -117,10 +116,10 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
     }
 
     @Override
-    public void onGetDataSuccessfulUserStudent() {
+    public void onGetDataSuccessfulUserStudent(int userType) {
         mProgressBar.setVisibility(View.GONE);
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra(StaffLoginActivity.TYPE_KEY , STUDENT_VAL);
+        i.putExtra(StaffLoginActivity.TYPE_KEY , userType);
         startActivity(i);
         finish();
     }

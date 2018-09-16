@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.createFormActivity.CreateFormActivity"
+    tools:showIn="@layout/activity_create_form">
+
+    <!--33B5E5 question mark-->
+    <!--b9b4b4 line-->
+    <!--personal-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/personal_inforamtion"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/per"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_form_note_string"
+            android:layout_below="@id/per"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/note"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_form_personal_information_liner_2"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_view_boarder_grey"
+        android:layout_below="@id/note"
+        >
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/create_form_progressbar"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/create_form_name_id_lin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_height="match_parent"
+                    android:text="@string/name"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:id="@+id/create_form_personal_information_name"
+                    android:text="@string/name"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_height="match_parent"
+                    android:text="@string/id"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:text="@string/id"
+                    android:id="@+id/create_form_personal_information_id"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="end">
+
+            <ImageView
+                android:id="@+id/create_form_personal_information_arrow_click"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_action_arrow"
+                android:layout_gravity="center"
+                android:clickable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--loan-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_form_loan_form_linear"
+        android:layout_below="@id/create_form_personal_information_liner_2"
+        android:orientation="vertical"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_information"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="13dp"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:text="@string/amount"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dollarSign"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_amount"
+                android:id="@+id/create_form_amount_et"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:inputType="numberDecimal"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_height="18dp"
+                android:id="@+id/create_form_amount_help_iv"
+                android:background="@drawable/ic_action_question_mark"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="13dp"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:text="@string/usage"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_form_loan_form_usage_dropdown"
+                android:hint="@string/select_usage"
+                android:autofillHints="@string/select_usage"
+                android:textSize="15sp"
+                android:layout_marginLeft="19dp"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_height="18dp"
+                android:id="@+id/create_form_usage_dropdown_help_iv"
+                android:background="@drawable/ic_action_question_mark"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_form_loan_form_other_usage_hidden_linear"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="13dp"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:text="@string/other_usage"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:hint="@string/please_write_your_usage"
+                android:id="@+id/create_form_write_another_usage_et"
+                android:layout_marginLeft="19dp"
+                android:textSize="15sp"
+                android:textAlignment="center"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_height="18dp"
+                android:id="@+id/create_form_another_usage_help_iv"
+                android:background="@drawable/ic_action_question_mark"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="13dp"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:text="@string/period_year"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_form_loan_form_period_year_dropdown"
+                android:hint="@string/select_year"
+                android:autofillHints="@string/select_year"
+                android:textSize="15sp"
+                android:layout_marginLeft="19dp"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_height="18dp"
+                android:id="@+id/create_form_period_year_help_iv"
+                android:background="@drawable/ic_action_question_mark"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:text="@string/repayment_months"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_form_loan_form_repayment_month_dropdown"
+                android:hint="@string/select_months"
+                android:autofillHints="Select Months"
+                android:textSize="15sp"
+                android:layout_marginLeft="19dp"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_height="18dp"
+                android:id="@+id/create_form_repayment_month_help_iv"
+                android:background="@drawable/ic_action_question_mark"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--bank-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/create_form_loan_form_linear_2"
+        android:layout_below="@id/create_form_loan_form_linear">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/back_information"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/bsb"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:hint="@string/your_bsb"
+                android:layout_marginLeft="19dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:inputType="number"
+                android:id="@+id/create_form_bsb_et"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/account_num"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:hint="@string/your_account_number"
+                android:layout_marginLeft="19dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:id="@+id/create_form_account_num_et"
+                android:inputType="number"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_form_loan_form_linear_2"
+        android:orientation="vertical"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_form_cancel_btn"
+                android:background="@drawable/text_view_boarder"
+                android:text="@string/cancel" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_form_save_btn"
+                android:background="@drawable/text_view_boarder"
+                android:text="@string/save" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_form_submit_btn"
+                android:background="@drawable/text_view_boarder"
+                android:text="@string/submit" />
+        </LinearLayout>
+    </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

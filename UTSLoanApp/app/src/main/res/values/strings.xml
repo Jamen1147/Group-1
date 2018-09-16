@@ -42,4 +42,85 @@
     <string name="guidance">Guidance</string>
     <string name="application_forms">Application Forms</string>
     <string name="my_reviewing_forms">My Reviewing Forms</string>
+    <string name="title_activity_create_form">CreateFormActivity</string>
+    <string name="create_form_note_string"><![CDATA[*Note: Your click the -> button to check your personal information before submitting the form]]></string>
+    <string name="personal_inforamtion">Personal Information</string>
+    <string name="name">Name:</string>
+    <string name="id">ID:</string>
+    <string name="loan_information">Loan Information</string>
+    <string name="amount">Amount:</string>
+    <string name="dollarSign">$</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="usage">Usage:</string>
+    <string name="select_usage">Select Usage</string>
+    <string name="other_usage">Other Usage:</string>
+    <string name="please_write_your_usage">Please write your usage</string>
+    <string name="period_year">Period Year:</string>
+    <string name="select_year">Select Year</string>
+    <string name="repayment_months">Repayment Months:</string>
+    <string name="select_months">Select Months</string>
+    <string name="back_information">Back Information</string>
+    <string name="bsb">BSB:</string>
+    <string name="your_bsb">Your BSB</string>
+    <string name="account_num">Account Num:</string>
+    <string name="your_account_number">Your Account Number</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="submit">Submit</string>
+
+    <!--Spinner-->
+    <string name="select_usage_spinner">Select Usage</string>
+    <string name="select_period_spinner">Select Year</string>
+    <string name="select_repayment_spinner">Select Months</string>
+    <string name="amount_help_msg">The amount of money that the you expect to spend on feeding the period of the loan time that the you are applying for.</string>
+    <string name="usage_help_msg">The usage of the loan, for example your tuition fee</string>
+    <string name="period_yesr_helpZ_msg">The academic period for which loan funds are used to cover the cost</string>
+    <string name="repayment_help_msg">The maximum time period over which you expect to repay the loan.</string>
+    <string name="other_usage_help_msg">If not match the above options, please put down the description about how you will spend the loan</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="not_sure">Not Sure</string>
+    <string name="yes">Yes</string>
+    <string name="internet_error">Internet Error</string>
+    <string name="err_msg_amount_empty">Amount must not be empty</string>
+    <string name="err_msg_amount_low">Amount too low</string>
+    <string name="err_msg_amount_high">Amount too high</string>
+    <string name="err_msg_bsb_empty">BSB must not be empty</string>
+    <string name="err_msg_account_num_empty">Account number must not be empty</string>
+    <string name="err_msg_usage_not_chosen">Usage must be chosen</string>
+    <string name="err_msg_other_usage_empty">Please clarify your other usage</string>
+    <string name="err_msg_loan_period_notZ_chosen">Loan period must be chosen</string>
+    <string name="err_msg_repayment_not_chosen">Repayment period must be chosen</string>
+    <string name="err_msg_bsb_wrong">BSB should be 6 digits</string>
+    <string name="err_msg_account_num_wrong">Account number should be 6 - 8 digits</string>
+
+    <string-array name="usage_list">
+        <item>Select Usage</item>
+        <item>Tuition</item>
+        <item>Accommodation</item>
+        <item>Tuition and Accommodation</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="period_list">
+        <item>Select Year</item>
+        <item>1 Year</item>
+        <item>2 Years</item>
+        <item>3 Years</item>
+        <item>4 Years</item>
+    </string-array>
+
+    <string-array name="repayment_list">
+        <item>Select Months</item>
+        <item>6 Months</item>
+        <item>12 Months</item>
+        <item>18 Months</item>
+        <item>24 Months</item>
+        <item>30 Months</item>
+        <item>36 Months</item>
+        <item>42 Months</item>
+        <item>48 Months</item>
+        <item>54 Months</item>
+        <item>60 Months</item>
+    </string-array>
+
 </resources>
