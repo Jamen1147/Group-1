@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.createFormActivity.CreateFormActivity;
 import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
+import com.sep.utsloanapp.activities.studentMyFormsActivity.StudentMyFormsActivity;
 import com.sep.utsloanapp.activities.utils.Utils;
 
 public class StudentFragment extends Fragment implements StudentContract.View, View.OnClickListener{
@@ -43,6 +45,9 @@ public class StudentFragment extends Fragment implements StudentContract.View, V
         mMyForms_tv.setOnClickListener(this);
         mGuidance_tv.setOnClickListener(this);
 
+        //check if the student can create one more form
+        mPresenter.checkAvailable();
+
         return view;
     }
 
@@ -66,17 +71,17 @@ public class StudentFragment extends Fragment implements StudentContract.View, V
     public void onClick(View v) {
         if (v == mCreateForm_tv){
             //go to create form activity
-            mPresenter.checkAvailable();
             if (mAvailable == 0){
-                Utils.showMsg(getContext(), "You have already had one form in process");
+                Utils.showMsgDialog(getActivity(), getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                        getString(R.string.reminder),
+                        getString(R.string.form_more_than_one_error_msg));
             }else if (mAvailable == 1){
                 startActivity(new Intent(getActivity(), CreateFormActivity.class));
             }
         }
 
         if (v == mMyForms_tv){
-            //go to my forms activity with a string extra called 'student_my_forms'
-            
+            startActivity(new Intent(getActivity(), StudentMyFormsActivity.class));
         }
 
         if (v == mGuidance_tv){

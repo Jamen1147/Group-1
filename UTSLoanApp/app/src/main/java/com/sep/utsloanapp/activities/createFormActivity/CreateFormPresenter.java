@@ -2,6 +2,7 @@ package com.sep.utsloanapp.activities.createFormActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -9,7 +10,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 import com.sep.utsloanapp.R;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
 import com.sep.utsloanapp.models.Application;
@@ -17,6 +20,7 @@ import com.sep.utsloanapp.models.Student;
 import com.sep.utsloanapp.models.User;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 public class CreateFormPresenter implements CreateFormContract.Presenter{
@@ -65,7 +69,7 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
                             String lastName = student.getLastName();
                             String name = firstName + " " + lastName;
                             String id = student.getStudentId() + "";
-                            mView.onLoadNameSuccessful(name, id);
+                            mView.onLoadNameSuccessful(name, id, student);
                         }
                     }
                 }
@@ -79,23 +83,31 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
     }
 
     @Override
-    public void loadFormContent() {
-        mDatabaseHelper.retrieveApplicationData(new DatabaseHelper.OnGetDataListener() {
-            @Override
-            public void onStart() {
+    public void loadFormContent(Bundle extra) {
+        String jsonApplication = extra.getString(Constant.JSON_APPLICATION_KEY);
+        Application application = new Gson().fromJson(jsonApplication, Application.class);
+        int[] indexes = getDropDownIndexes(application);
+        mView.setFormContent(application, indexes);
+    }
 
-            }
+    private int[] getDropDownIndexes(Application application){
+        String[] usageArray = mContext.getResources().getStringArray(R.array.usage_list);
+        int usageIndex = Arrays.asList(usageArray).indexOf(application.getUsage());
 
-            @Override
-            public void onSuccessful(DataSnapshot dataSnapshot) {
+        String[] loanPeriodArray = mContext.getResources().getStringArray(R.array.period_list);
+        int loanPeriodIndex = Arrays.asList(loanPeriodArray).indexOf(application.getLoanPeriodYear());
 
-            }
+        String[] repaymentArray = mContext.getResources().getStringArray(R.array.repayment_list);
+        int repaymentIndex = Arrays.asList(repaymentArray).indexOf(application.getRepaymentPeriodMonth());
 
-            @Override
-            public void onFailed(DatabaseError databaseError) {
+        if (TextUtils.isEmpty(application.getUsage()))
+            usageIndex = 0;
+        if (TextUtils.isEmpty(application.getLoanPeriodYear()))
+            loanPeriodIndex = 0;
+        if (TextUtils.isEmpty(application.getRepaymentPeriodMonth()))
+            repaymentIndex = 0;
 
-            }
-        });
+        return new int[]{usageIndex, loanPeriodIndex, repaymentIndex};
     }
 
     @Override
@@ -116,18 +128,23 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
     @Override
     public void saveForm(Application application) {
         String uid = mAuthHelper.getUid();
-        application.setApplicationId(mDatabaseHelper.pushKey());
+
+        if (TextUtils.isEmpty(application.getApplicationId())){
+            application.setApplicationId(mDatabaseHelper.pushKey());
+        }
+
         application.setStudentUid(uid);
-        application.setStaffUid("");
         mDatabaseHelper.saveObject(application);
         //disable
         mDatabaseHelper.updateUserAvailability(uid, 0);
-        mView.onSaveFinished();
+        mView.onSaveFinished("Saved");
     }
 
     @Override
     public void submitForm(Application application) {
-        application.setApplicationId(mDatabaseHelper.pushKey());
+        if (TextUtils.isEmpty(application.getApplicationId())){
+            application.setApplicationId(mDatabaseHelper.pushKey());
+        }
         application.setStudentUid(mAuthHelper.getUid());
         @SuppressLint("SimpleDateFormat")
         String currentDateAndTime = new SimpleDateFormat(DATE_TIME_PATTERN).format(new Date());
@@ -135,8 +152,9 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
 
         if (formIsValid(application)){
             mDatabaseHelper.saveObject(application);
+            mDatabaseHelper.updateUserAvailability(mAuthHelper.getUid(), 0);
+            mView.onSaveFinished("Submitted");
         }
-
     }
 
     private boolean formIsValid(Application application) {

@@ -47,14 +47,16 @@ public class Utils {
     /**
      * Show a simple alert dialog.
      */
-    public static void showMsgDialog(Context context, View view, String msg){
+    public static void showMsgDialog(Context context, View view, String title, String msg){
         AlertDialog.Builder ab = new AlertDialog.Builder(context);
         ab.setView(view);
         final Dialog dialog = ab.create();
         dialog.show();
 
-        TextView textView = view.findViewById(R.id.msg_dialog_tv);
-        textView.setText(msg);
+        TextView msg_tv = view.findViewById(R.id.msg_dialog_tv);
+        msg_tv.setText(msg);
+        TextView title_tv = view.findViewById(R.id.msg_dialog_title_tv);
+        title_tv.setText(title);
 
         Button okBtn = view.findViewById(R.id.msg_dialog_ok_btn);
         okBtn.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +72,7 @@ public class Utils {
      * Pass in: context, view, confirm msg, cancel button msg, confirm button msg,
      * and a callable to handle the confirm button click event.
      */
-    public static void showConfirmDialog(Context context, View view, String confirmMsg,
+    public static void showConfirmDialog(Context context, View view, String title, String confirmMsg,
                                          String cancelBtnMsg, String confirmBtnMsg,
                                          final Callable<Void> method){
 
@@ -79,8 +81,10 @@ public class Utils {
         final Dialog dialog = ab.create();
         dialog.show();
 
-        TextView textView = view.findViewById(R.id.dialog_confirm_dialog_confirm_msg_tv);
-        textView.setText(confirmMsg);
+        TextView msg_tv = view.findViewById(R.id.dialog_confirm_dialog_confirm_msg_tv);
+        msg_tv.setText(confirmMsg);
+        TextView title_tv = view.findViewById(R.id.confirm_dialog_title_tv);
+        title_tv.setText(title);
 
         Button cancelBtn = view.findViewById(R.id.dialog_confirm_dialog_cancel_btn);
         cancelBtn.setText(cancelBtnMsg);

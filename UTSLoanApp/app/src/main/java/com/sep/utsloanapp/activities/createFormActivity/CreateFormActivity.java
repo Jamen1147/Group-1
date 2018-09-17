@@ -1,10 +1,12 @@
 package com.sep.utsloanapp.activities.createFormActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,17 +20,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseError;
+import com.google.gson.Gson;
 import com.sep.utsloanapp.R;
+import com.sep.utsloanapp.activities.studentPersonalDetailActivity.StudentPersonalDetailActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.activities.utils.Utils;
 import com.sep.utsloanapp.models.Application;
+import com.sep.utsloanapp.models.Student;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 public class CreateFormActivity extends AppCompatActivity implements View.OnClickListener, CreateFormContract.View{
-
-    public static final String FORM_STATUS_SAVED = "saved";
-    public static final String FORM_STATUS_SUBMITTED = "submitted";
 
     private TextView mStudentName_tv, mStudentId_tv;
     private ImageView mPersonalArrow_iv, mAmountHelp_iv, mUsageHelp_iv, mOtherUsageHelp_iv,
@@ -42,7 +46,12 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
     private LinearLayout mLinearLayout, mOtherHiddenLin;
     private CreateFormContract.Presenter mPresenter;
     private String mUsage, mLoanPeriod, mRepaymentPeriod;
-    private int mStudentId;
+
+    private String mJsonStudent = "";
+    private Student mStudent = new Student();
+
+    private boolean mHasApplicationLoaded = false;
+    private Application mApplication = new Application();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +78,7 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
         if (getIntent().getExtras() != null){
             //It's the saved one
             //TODO: Retrieve application data then Set contents
-            mPresenter.loadFormContent();
+            mPresenter.loadFormContent(getIntent().getExtras());
         }
 
         mPresenter.loadNameID();
@@ -189,6 +198,7 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
     public boolean onSupportNavigateUp() {
         Utils.showConfirmDialog(this,
                 getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                getString(R.string.confirmation),
                 getString(R.string.are_you_sure),
                 getString(R.string.not_sure),
                 getString(R.string.yes),
@@ -206,40 +216,49 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         if(v == mPersonalArrow_iv){
             //TODO: go to Personal Detail Activity
+            Intent intent = new Intent(this, StudentPersonalDetailActivity.class);
+            intent.putExtra(Constant.JSON_STUDENT_KEY, mJsonStudent);
+            startActivity(intent);
         }
         if (v == mAmountHelp_iv) {
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getString(R.string.amount_help_msg));
         }
 
         if (v == mUsageHelp_iv){
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getString(R.string.usage_help_msg));
         }
 
         if (v == mPeriodYearHelp_iv){
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getString(R.string.period_yesr_helpZ_msg));
         }
 
         if (v == mRepaymentHelp_iv){
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getString(R.string.repayment_help_msg));
         }
 
         if (v == mOtherUsageHelp_iv){
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getString(R.string.other_usage_help_msg));
         }
 
         if (v == mCancel_btn){
             Utils.showConfirmDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                    getString(R.string.confirmation),
                     getString(R.string.are_you_sure),
                     getString(R.string.not_sure),
                     getString(R.string.yes),
@@ -256,6 +275,7 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
             //TODO: Presenter --> Save
             Utils.showConfirmDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                    getString(R.string.confirmation),
                     getString(R.string.are_you_sure),
                     getString(R.string.cancel),
                     getString(R.string.save),
@@ -263,7 +283,7 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public Void call() {
                             Application application = getFormInfo();
-                            application.setStatus(FORM_STATUS_SAVED);
+                            application.setStatus(Constant.FORM_STATUS_SAVED);
                             mPresenter.saveForm(application);
                             return null;
                         }
@@ -274,6 +294,7 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
             //TODO: Presenter --> Submit
             Utils.showConfirmDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                    getString(R.string.confirmation),
                     getString(R.string.are_you_sure),
                     getString(R.string.cancel),
                     getString(R.string.submit),
@@ -281,7 +302,7 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public Void call() {
                             Application application = getFormInfo();
-                            application.setStatus(FORM_STATUS_SUBMITTED);
+                            application.setStatus(Constant.FORM_STATUS_SUBMITTED);
                             mPresenter.submitForm(application);
                             return null;
                         }
@@ -306,10 +327,14 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public void onLoadNameSuccessful(String name, String id) {
+    public void onLoadNameSuccessful(String name, String id, Student student) {
         mStudentName_tv.setText(name);
         mStudentId_tv.setText(id);
-        mStudentId = Integer.valueOf(id);
+        mStudent = student;
+
+        //to Json
+        mJsonStudent = new Gson().toJson(student);
+
         mLinearLayout.setVisibility(View.VISIBLE);
         mProgressBar.setVisibility(View.GONE);
     }
@@ -351,12 +376,35 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public void onSaveFinished() {
+    public void onSaveFinished(String msg) {
         onBackPressed();
+        Utils.showMsg(this, "Successfully " + msg +  " Application Form");
+    }
+
+    @Override
+    public void setFormContent(Application application, int[] indexes) {
+
+        mAmount_et.setText(application.getAmount());
+        mUsageSpinner.setSelection(indexes[0]);
+        mPeriodYearSpinner.setSelection(indexes[1]);
+        mRepaymentMonthSpinner.setSelection(indexes[2]);
+        mOtherUsage_et.setText(application.getOtherUsage());
+        mBsb_et.setText(application.getBankBsb());
+        mAccountNum_et.setText(application.getBankAccount());
+
+        mHasApplicationLoaded = true;
+        mApplication = application;
     }
 
     private Application getFormInfo(){
         String applicationId = "";
+        String studentUid = "";
+
+        if (mHasApplicationLoaded){
+            applicationId = mApplication.getApplicationId();
+            studentUid = mApplication.getStudentUid();
+        }
+
         String timeSubmitted = "";
         String timeDeclared = "";
         String status = "";
@@ -370,12 +418,12 @@ public class CreateFormActivity extends AppCompatActivity implements View.OnClic
         String bankAccount = mAccountNum_et.getText().toString();
 
         String rejectReason = "";
-        String studentUid = "";
         String staffUid = "";
         int result = -1;
 
         return new Application(applicationId, timeSubmitted, timeDeclared, status, amount, usage,
                 loanPeriod, repaymentPeriod, otherUsage, rejectReason, bankBsb, bankAccount,
-                studentUid, staffUid, result);
+                studentUid, staffUid, mStudent.getFirstName(), mStudent.getLastName(),
+                mStudent.getStudentId(), result);
     }
 }

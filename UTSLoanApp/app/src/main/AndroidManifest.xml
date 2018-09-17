@@ -40,6 +40,14 @@
         <activity
             android:name=".activities.createFormActivity.CreateFormActivity"
             android:label="@string/title_activity_create_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.studentMyFormsActivity.StudentMyFormsActivity"
+            android:label="@string/title_activity_student_my_forms"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.studentPersonalDetailActivity.StudentPersonalDetailActivity"
+            android:label="@string/title_activity_student_personal_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

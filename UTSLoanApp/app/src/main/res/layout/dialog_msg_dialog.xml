@@ -7,21 +7,48 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/colorLightBlue"
-        android:textStyle="bold"
-        android:text="@string/login_help_text"
         android:layout_alignParentTop="true"
+        android:text="Title"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic|bold"
+        android:textColor="@color/colorLightBlue"
+        android:gravity="center"
+        android:id="@+id/msg_dialog_title_tv"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/msg_dialog_line"
+        android:layout_below="@+id/msg_dialog_title_tv"
+        android:background="@color/colorLightBlue"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/colorLightBlue"
+        android:text="@string/login_help_text"
         android:id="@+id/msg_dialog_tv"
         android:layout_margin="10dp"
+        android:layout_below="@+id/msg_dialog_line"
         android:gravity="center_horizontal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/msg_dialog_tv"
+        android:id="@+id/msg_dialog_line_2"
+        android:background="@color/colorLightBlue"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:layout_marginRight="8dp"
-            android:layout_below="@+id/msg_dialog_tv"
+            android:layout_below="@+id/msg_dialog_line_2"
             android:text="@string/ok_button_text"
             android:background="@drawable/text_view_boarder"
             android:id="@+id/msg_dialog_ok_btn"
