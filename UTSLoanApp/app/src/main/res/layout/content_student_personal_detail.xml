@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.studentPersonalDetailActivity.StudentPersonalDetailActivity"
+    tools:showIn="@layout/activity_student_personal_detail">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/student_personal_information_scrollView"
+        android:layout_above="@id/student_personal_information_back_btn">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/student_personal_information_main_view"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="Student Personal Information"
+                    android:textStyle="italic | bold"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="5dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="First Name:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_first_name"
+                        android:layout_marginStart="15dp"
+                        android:text="first name"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Last Name:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_last_name"
+                        android:layout_marginStart="15dp"
+                        android:text="last name"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Student ID:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_student_id"
+                        android:layout_marginStart="15dp"
+                        android:text="student id"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Gender:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_gender"
+                        android:layout_marginStart="15dp"
+                        android:text="gender"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Date of Birth:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_date_of_birth"
+                        android:layout_marginStart="15dp"
+                        android:text="date of birth"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Citizenship:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_citizenship"
+                        android:layout_marginStart="15dp"
+                        android:text="citizenship"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Email Address:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_email_address"
+                        android:layout_marginStart="15dp"
+                        android:text="email address"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Phone Number:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_phone_number"
+                        android:layout_marginStart="15dp"
+                        android:text="phone number"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Current University Status"
+                        android:textStyle="italic | bold"
+                        android:textSize="25sp"
+                        android:layout_marginLeft="5dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Course:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_course"
+                        android:layout_marginStart="15dp"
+                        android:text="course"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Major:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_major"
+                        android:layout_marginStart="15dp"
+                        android:text="major"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Faculty:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_faculty"
+                        android:layout_marginStart="15dp"
+                        android:text="faculty"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Degree:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_degree"
+                        android:layout_marginStart="15dp"
+                        android:text="degree"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:text="Year:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent"
+                        android:id="@+id/student_personal_information_year_of_student"
+                        android:layout_marginStart="15dp"
+                        android:text="year"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:id="@+id/student_personal_information_progressbar"/>
+
+    </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/student_personal_information_back_btn"
+        android:background="@drawable/text_view_boarder"
+        android:layout_alignParentBottom="true"
+        android:text="Back"
+        />
+
+</RelativeLayout>

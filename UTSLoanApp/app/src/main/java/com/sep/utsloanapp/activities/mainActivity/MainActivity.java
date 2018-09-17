@@ -21,15 +21,12 @@ import com.sep.utsloanapp.activities.logoActivity.LogoPageActivity;
 import com.sep.utsloanapp.activities.mainActivity.staffFragment.StaffFragment;
 import com.sep.utsloanapp.activities.mainActivity.studentFragment.StudentFragment;
 import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.activities.utils.Utils;
 
 import java.util.concurrent.Callable;
 
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
-
-    public static final String STUDENT_FRAGMENT = "student_frag";
-    public static final String STAFF_FRAGMENT = "staff_frag";
-    public static final String AVAILABILITY_KEY = "availabilityKey";
 
     private MainActivityContract.Presenter mPresenter;
 
@@ -62,12 +59,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private void showStudentFragment() {
         mStudentFragment = new StudentFragment();
         StudentFragment savedStudentFragment = (StudentFragment) getSupportFragmentManager()
-                .findFragmentByTag(STUDENT_FRAGMENT);
+                .findFragmentByTag(Constant.STUDENT_FRAGMENT);
 
         if (savedStudentFragment == null){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.main_frame_layout, mStudentFragment, STUDENT_FRAGMENT);
+            fragmentTransaction.add(R.id.main_frame_layout, mStudentFragment, Constant.STUDENT_FRAGMENT);
             fragmentTransaction.commit();
         }
     }
@@ -75,12 +72,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private void showStaffFragment() {
         mStaffFragment = new StaffFragment();
         StaffFragment savedStaffFragment = (StaffFragment) getSupportFragmentManager()
-                .findFragmentByTag(STAFF_FRAGMENT);
+                .findFragmentByTag(Constant.STAFF_FRAGMENT);
 
         if (savedStaffFragment == null){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.main_frame_layout, mStaffFragment, STAFF_FRAGMENT);
+            fragmentTransaction.add(R.id.main_frame_layout, mStaffFragment, Constant.STAFF_FRAGMENT);
             fragmentTransaction.commit();
         }
     }
@@ -145,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         if (id == R.id.action_bar_logout){
             Utils.showConfirmDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                    getString(R.string.confirmation),
                     getResources().getString(R.string.want_to_sign_out),
                     getResources().getString(R.string.get_me_back),
                     getResources().getString(R.string.sign_me_out),

@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.mainActivity.MainActivity;
 import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.activities.utils.Utils;
 
 public class StudentLoginActivity extends AppCompatActivity implements StudentLoginContract.View,
@@ -27,8 +28,6 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
     private String mStudentId, mPassword;
 
     private StudentLoginContract.Presenter mPresenter;
-
-    public static final int STUDENT_VAL = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +75,7 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
         if (view == mLoginHelpTv){
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getResources().getString(R.string.login_help_text));
         }
     }
@@ -119,7 +119,7 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
     public void onGetDataSuccessfulUserStudent(int userType) {
         mProgressBar.setVisibility(View.GONE);
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra(StaffLoginActivity.TYPE_KEY , userType);
+        i.putExtra(Constant.TYPE_KEY , userType);
         startActivity(i);
         finish();
     }
@@ -141,7 +141,7 @@ public class StudentLoginActivity extends AppCompatActivity implements StudentLo
         mPresenter.doSaveUser(mStudentId, mPassword);
         mProgressBar.setVisibility(View.GONE);
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra(StaffLoginActivity.TYPE_KEY, STUDENT_VAL);
+        i.putExtra(Constant.TYPE_KEY, Constant.STUDENT_VAL);
         startActivity(i);
         finish();
     }

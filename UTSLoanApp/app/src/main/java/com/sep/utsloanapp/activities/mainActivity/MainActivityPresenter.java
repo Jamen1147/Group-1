@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
 import com.sep.utsloanapp.models.User;
@@ -52,8 +53,8 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
     @Override
     public void checkType(Bundle extra) {
         if (extra != null){
-            int type = extra.getInt(StaffLoginActivity.TYPE_KEY);
-            if (type == StaffLoginActivity.STAFF_VAL){
+            int type = extra.getInt(Constant.TYPE_KEY);
+            if (type == Constant.STAFF_VAL){
                 //staff
                 mView.showStaff();
             }else {

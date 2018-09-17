@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseError;
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.mainActivity.MainActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.activities.utils.Utils;
 
 public class StaffLoginActivity extends AppCompatActivity implements StaffLoginContract.View,
@@ -26,9 +27,6 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
     private Button mLoginBtn;
     private ProgressBar mProgressBar;
     private String mStaffId, mPassword;
-
-    public static final int STAFF_VAL = 1;
-    public static final String TYPE_KEY = "typeKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +79,7 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
         if (view == mLoginHelpTv){
             Utils.showMsgDialog(this,
                     getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
+                    getResources().getString(R.string.help),
                     getResources().getString(R.string.login_help_text));
         }
     }
@@ -130,7 +129,7 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
     public void onGetDataSuccessfulUserStaff(int userType) {
         mProgressBar.setVisibility(View.GONE);
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra(TYPE_KEY , userType);
+        i.putExtra(Constant.TYPE_KEY , userType);
         startActivity(i);
         finish();
     }
@@ -146,7 +145,7 @@ public class StaffLoginActivity extends AppCompatActivity implements StaffLoginC
         mPresenter.doSaveUser(mStaffId, mPassword);
         mProgressBar.setVisibility(View.GONE);
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra(TYPE_KEY , STAFF_VAL);
+        i.putExtra(Constant.TYPE_KEY , Constant.STAFF_VAL);
         startActivity(i);
         finish();
     }

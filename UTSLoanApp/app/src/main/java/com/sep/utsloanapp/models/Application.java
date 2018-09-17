@@ -15,9 +15,9 @@ public class Application {
 
     private String mApplicationId, mTimeSubmitted, mTimeDeclared, mStatus, mAmount, mUsage,
             mLoanPeriodYear, mRepaymentPeriodMonth, mOtherUsage, mRejectReason, mBankBsb,
-            mBankAccount, mStudentUid, mStaffUid;
+            mBankAccount, mStudentUid, mStaffUid, mStudentFirstName, mStudentLastName;
 
-    private int mResult;
+    private int mStudentID, mResult;
 
     public Application() {
     }
@@ -26,7 +26,8 @@ public class Application {
                        String status, String amount, String usage, String loanPeriodYear,
                        String repaymentPeriodMonth, String otherUsage,
                        String rejectReason, String bankBsb, String bankAccount,
-                       String studentUid, String staffUid, int result) {
+                       String studentUid, String staffUid, String studentFirstName, String studentLastName,
+                       int studentID, int result) {
 
         mApplicationId = applicationId;
         mTimeSubmitted = timeSubmitted;
@@ -41,7 +42,36 @@ public class Application {
         mResult = result;
         mBankAccount = bankAccount;
         mBankBsb = bankBsb;
+        mStudentUid = studentUid;
+        mStaffUid = staffUid;
+        mStudentFirstName = studentFirstName;
+        mStudentLastName = studentLastName;
+        mStudentID = studentID;
 
+    }
+
+    public String getStudentFirstName() {
+        return mStudentFirstName;
+    }
+
+    public void setStudentFirstName(String studentFirstName) {
+        mStudentFirstName = studentFirstName;
+    }
+
+    public String getStudentLastName() {
+        return mStudentLastName;
+    }
+
+    public void setStudentLastName(String studentLastName) {
+        mStudentLastName = studentLastName;
+    }
+
+    public int getStudentID() {
+        return mStudentID;
+    }
+
+    public void setStudentID(int studentID) {
+        mStudentID = studentID;
     }
 
     public String getStudentUid() {

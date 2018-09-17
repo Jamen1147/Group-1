@@ -122,5 +122,13 @@
         <item>54 Months</item>
         <item>60 Months</item>
     </string-array>
+    <string name="title_activity_student_my_forms">StudentMyFormsActivity</string>
+    <string name="title_activity_student_personal_detail">StudentPersonalDetailActivity</string>
+    <string name="help">Help</string>
+    <string name="form_more_than_one_error_msg">You\'ve already got one form in editing or in process, please go to \'my forms\' to check it</string>
+    <string name="reminder">Reminder</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="to_be_submitted">To be submitted</string>
+    <string name="to_be_issued">To be issued</string>
 
 </resources>

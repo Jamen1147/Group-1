@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,6 +11,12 @@
     <!--33B5E5 question mark-->
     <!--b9b4b4 line-->
     <!--personal-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/create_form_btn_lin">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -439,25 +445,24 @@
                 android:id="@+id/create_form_account_num_et"
                 android:inputType="number"/>
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/create_form_loan_form_linear_2"
-        android:orientation="vertical"
-        >
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
 
+    </LinearLayout>
+    </RelativeLayout>
+
+    </ScrollView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/create_form_btn_lin"
             android:layout_marginTop="12dp">
 
             <Button
@@ -484,7 +489,5 @@
                 android:background="@drawable/text_view_boarder"
                 android:text="@string/submit" />
         </LinearLayout>
-    </LinearLayout>
-    </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>
