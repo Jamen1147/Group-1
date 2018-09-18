@@ -468,6 +468,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_margin="2dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/create_form_cancel_btn"
                 android:background="@drawable/text_view_boarder"
@@ -476,6 +477,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_margin="2dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/create_form_save_btn"
                 android:background="@drawable/text_view_boarder"
@@ -484,6 +486,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_margin="2dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/create_form_submit_btn"
                 android:background="@drawable/text_view_boarder"

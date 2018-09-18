@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 
 import com.google.firebase.database.DatabaseError;
 import com.sep.utsloanapp.R;
+import com.sep.utsloanapp.activities.applicationDetailActivity.ApplicationDetailActivity;
 import com.sep.utsloanapp.activities.createFormActivity.CreateFormActivity;
 import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.activities.utils.Utils;
@@ -109,6 +110,9 @@ public class StudentMyFormsActivity extends AppCompatActivity implements Student
     @Override
     public void goToDetailView(String jsonApplication) {
         //TODO: Form Detail View need to be completed
-        Utils.showMsg(this, "Go to Detail View");
+        Intent intent = new Intent(this, ApplicationDetailActivity.class);
+        intent.putExtra(Constant.TYPE_KEY, Constant.STUDENT_VAL);
+        intent.putExtra(Constant.JSON_APPLICATION_KEY, jsonApplication);
+        startActivity(intent);
     }
 }

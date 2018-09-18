@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.createFormActivity.CreateFormActivity;
+import com.sep.utsloanapp.activities.guideActivity.GuideActivity;
 import com.sep.utsloanapp.activities.staffLoginActivity.StaffLoginActivity;
 import com.sep.utsloanapp.activities.studentMyFormsActivity.StudentMyFormsActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.activities.utils.Utils;
 
 public class StudentFragment extends Fragment implements StudentContract.View, View.OnClickListener{
@@ -71,11 +73,11 @@ public class StudentFragment extends Fragment implements StudentContract.View, V
     public void onClick(View v) {
         if (v == mCreateForm_tv){
             //go to create form activity
-            if (mAvailable == 0){
+            if (mAvailable == Constant.DISABLE_VAL){
                 Utils.showMsgDialog(getActivity(), getLayoutInflater().inflate(R.layout.dialog_msg_dialog, null),
                         getString(R.string.reminder),
                         getString(R.string.form_more_than_one_error_msg));
-            }else if (mAvailable == 1){
+            }else if (mAvailable == Constant.ENABLE_VAL){
                 startActivity(new Intent(getActivity(), CreateFormActivity.class));
             }
         }
@@ -86,6 +88,7 @@ public class StudentFragment extends Fragment implements StudentContract.View, V
 
         if (v == mGuidance_tv){
             //go to guidance
+            startActivity(new Intent(getActivity(), GuideActivity.class));
         }
     }
 
