@@ -25,7 +25,6 @@ import java.util.Date;
 
 public class CreateFormPresenter implements CreateFormContract.Presenter{
 
-    public static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     private Context mContext;
     private CreateFormContract.View mView;
     private AuthHelper mAuthHelper;
@@ -136,7 +135,7 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
         application.setStudentUid(uid);
         mDatabaseHelper.saveObject(application);
         //disable
-        mDatabaseHelper.updateUserAvailability(uid, 0);
+        mDatabaseHelper.updateUserAvailability(uid, Constant.DISABLE_VAL);
         mView.onSaveFinished("Saved");
     }
 
@@ -147,12 +146,12 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
         }
         application.setStudentUid(mAuthHelper.getUid());
         @SuppressLint("SimpleDateFormat")
-        String currentDateAndTime = new SimpleDateFormat(DATE_TIME_PATTERN).format(new Date());
+        String currentDateAndTime = new SimpleDateFormat(Constant.DATE_TIME_PATTERN).format(new Date());
         application.setTimeSubmitted(currentDateAndTime);
 
         if (formIsValid(application)){
             mDatabaseHelper.saveObject(application);
-            mDatabaseHelper.updateUserAvailability(mAuthHelper.getUid(), 0);
+            mDatabaseHelper.updateUserAvailability(mAuthHelper.getUid(), Constant.DISABLE_VAL);
             mView.onSaveFinished("Submitted");
         }
     }

@@ -48,6 +48,14 @@
         <activity
             android:name=".activities.studentPersonalDetailActivity.StudentPersonalDetailActivity"
             android:label="@string/title_activity_student_personal_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.applicationDetailActivity.ApplicationDetailActivity"
+            android:label="@string/title_activity_application_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.guideActivity.GuideActivity"
+            android:label="@string/title_activity_guide"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

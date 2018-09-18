@@ -131,6 +131,15 @@ public class DatabaseHelper {
         }
     }
 
+    public void removeObject(Application application) {
+        try {
+            String applicationId = application.getApplicationId();
+            mReference.child(KEY_DB_APPLICATION).child(applicationId).setValue(null);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void updateUserAvailability(String uid, int availableValue) {
 
         Map<String, Object> map = new HashMap<>();

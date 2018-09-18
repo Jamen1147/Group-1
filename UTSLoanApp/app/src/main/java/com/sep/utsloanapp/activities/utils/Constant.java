@@ -20,4 +20,11 @@ public class Constant {
     public static final int STAFF_VAL = 1;
     public static final int STUDENT_VAL = 0;
     public static final String TYPE_KEY = "typeKey";
+
+    //Date format
+    public static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+    //Availability Code
+    public static final int ENABLE_VAL = 1;
+    public static final int DISABLE_VAL = 0;
 }

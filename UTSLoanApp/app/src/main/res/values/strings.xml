@@ -130,5 +130,14 @@
     <string name="confirmation">Confirmation</string>
     <string name="to_be_submitted">To be submitted</string>
     <string name="to_be_issued">To be issued</string>
+    <string name="title_activity_application_detail">ApplicationDetailActivity</string>
+    <string name="please_click_the_for_student_s_personal_information"><![CDATA[Please click the \' --> \' for student\'s personal information]]></string>
+    <string name="back">Back</string>
+    <string name="start_review">Start Review</string>
+    <string name="cannot_cancel_application_submission">You cannot cancel this application because it has been in process</string>
+    <string name="not_cancel_submission">Your application is waiting to be reviewed, are you sure you want to cancel this submission?</string>
+    <string name="i_am_sure">I am sure</string>
+    <string name="title_activity_guide">GuideActivity</string>
+    <string name="guidance_pop_up_msg">UTS Student Loan Application System Guidance Will Help You Go Through Every Aspect of The Application Form</string>
 
 </resources>
