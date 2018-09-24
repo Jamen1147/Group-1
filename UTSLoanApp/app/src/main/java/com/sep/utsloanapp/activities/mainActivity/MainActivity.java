@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                         @Override
                         public Void call() {
                             mPresenter.logout();
+                            Utils.showMsg(getBaseContext(), "Logged Out Successfully");
                             return null;
                         }
                     });

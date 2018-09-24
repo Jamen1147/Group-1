@@ -73,10 +73,10 @@ public class StudentLoginPresenter implements StudentLoginContract.Presenter{
         }
 
         User user = new User(studentId, uid, 0, 1);
-        Student student = new Student(uid, "Antonio", "Wang", "Antonio.Wang-1@student.uts.edu.au",
-                "0412417417", "2001-02-27", "Science in Information Technology",
-                "Enterprise Software Development", "Information Technology and Engineering",
-                "Bachelor", "Australian", Integer.valueOf(studentId), 0, 3);
+        Student student = new Student(uid, "Kong", "Kim", "Kong.Kim-1@student.uts.edu.au",
+                "0432890131", "1998-05-12", "Science in Information Technology",
+                "Inter-Networking", "Engineering and Information Technology",
+                "Bachelor", "Korean", Integer.valueOf(studentId), 0, 4);
 
         mDatabaseHelper.saveObject(user);
         mDatabaseHelper.saveObject(student);

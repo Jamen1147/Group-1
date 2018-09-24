@@ -12,9 +12,11 @@ public interface ApplicationDetailContract {
 
     interface View extends BaseView<Presenter>{
         void setContent(Application application, int userType);
+
         void onGetStudentDataStart();
         void onGetStudentDataSuccessful(Student student);
         void onGetStudentDataFailed(DatabaseError databaseError);
+
         void onCancelFinished();
     }
 

@@ -139,5 +139,8 @@
     <string name="i_am_sure">I am sure</string>
     <string name="title_activity_guide">GuideActivity</string>
     <string name="guidance_pop_up_msg">UTS Student Loan Application System Guidance Will Help You Go Through Every Aspect of The Application Form</string>
+    <string name="all_application_forms">All Application Forms</string>
+    <string name="title_activity_staff_all_forms">StaffAllFormsActivity</string>
+    <string name="search">Search...</string>
 
 </resources>
