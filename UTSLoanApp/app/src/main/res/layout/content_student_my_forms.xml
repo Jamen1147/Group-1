@@ -14,6 +14,11 @@
         android:text="My Application Forms"
         android:gravity="center"
         android:id="@+id/student_my_form_title"
+        android:background="@drawable/text_view_shadow"
+        android:elevation="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
         android:textSize="20sp"
         android:textStyle="bold|italic"/>
 
@@ -23,7 +28,7 @@
         android:background="@android:color/darker_gray"
         android:id="@+id/student_my_form_line"
         android:layout_below="@+id/student_my_form_title"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="3dp"/>
 
     <android.support.v7.widget.RecyclerView

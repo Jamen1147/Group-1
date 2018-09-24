@@ -56,6 +56,10 @@
         <activity
             android:name=".activities.guideActivity.GuideActivity"
             android:label="@string/title_activity_guide"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.staffAllFormsActivity.StaffAllFormsActivity"
+            android:label="@string/title_activity_staff_all_forms"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

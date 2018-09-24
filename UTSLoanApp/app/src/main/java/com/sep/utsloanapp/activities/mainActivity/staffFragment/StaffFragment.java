@@ -1,6 +1,7 @@
 package com.sep.utsloanapp.activities.mainActivity.staffFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,12 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.sep.utsloanapp.R;
+import com.sep.utsloanapp.activities.staffAllFormsActivity.StaffAllFormsActivity;
 
 import org.w3c.dom.Text;
 
 public class StaffFragment extends Fragment implements StaffContract.View, View.OnClickListener{
 
-    private TextView mSubmitted_tv, mMyForm_tv;
+    private TextView mAllForms_tv, mMyForm_tv;
     private StaffContract.Presenter mPresenter;
 
     public StaffFragment() {
@@ -35,16 +37,14 @@ public class StaffFragment extends Fragment implements StaffContract.View, View.
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_staff, container, false);
         initView(view);
-
-        mSubmitted_tv.setOnClickListener(this);
+        mAllForms_tv.setOnClickListener(this);
         mMyForm_tv.setOnClickListener(this);
-
         return view;
     }
 
     private void initView(View view) {
-        mSubmitted_tv = view.findViewById(R.id.staff_frament_submitted_application_tv);
-        mMyForm_tv = view.findViewById(R.id.staff_frament_reviewed_application_tv);
+        mAllForms_tv = view.findViewById(R.id.staff_fragment_all_application_forms_tv);
+        mMyForm_tv = view.findViewById(R.id.staff_fragment_my_forms_tv);
     }
 
     @Override
@@ -59,8 +59,9 @@ public class StaffFragment extends Fragment implements StaffContract.View, View.
 
     @Override
     public void onClick(View view) {
-        if (view == mSubmitted_tv){
+        if (view == mAllForms_tv){
             //go to submitted forms activity with a string extra called 'staff_submitted'
+            startActivity(new Intent(getActivity(), StaffAllFormsActivity.class));
         }
         if (view == mMyForm_tv){
             //go to my reviewing forms activity with a string extra called 'staff_reviewing'
