@@ -17,7 +17,7 @@ public interface ApplicationDetailContract {
         void onGetStudentDataSuccessful(Student student);
         void onGetStudentDataFailed(DatabaseError databaseError);
 
-        void onCancelFinished();
+        void finishViewWithMsg(String msg);
     }
 
     interface Presenter extends BasePresenter{
@@ -25,5 +25,11 @@ public interface ApplicationDetailContract {
         void unwrapApplicationData(Bundle extra);
         void getStudentInfo(String uid);
         void cancelApplicationSubmission(Application application);
+
+        //staff clicked start review, set staffUid as the current uid, set status, save to database
+        //then tell the view to finish
+        void startReviewForm(Application application);
+
+        void startDeclareForm(Application application);
     }
 }

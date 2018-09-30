@@ -30,6 +30,9 @@ public class StudentMyFormsActivity extends AppCompatActivity implements Student
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
 
+    //Half way change, staff might need to share this view
+    private boolean isStaff;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +50,17 @@ public class StudentMyFormsActivity extends AppCompatActivity implements Student
 
         init();
 
+        Bundle extra = getIntent().getExtras();
+        int type = 0;
+        if (extra != null){
+            type = extra.getInt(Constant.TYPE_KEY);
+            if (type == Constant.STAFF_VAL){
+                isStaff = true;
+            }
+        }
+
         mPresenter = new StudentMyFormsPresenter(this, this);
-        mPresenter.getFormsData();
+        mPresenter.getFormsData(type);
     }
 
     private void init() {
@@ -111,7 +123,11 @@ public class StudentMyFormsActivity extends AppCompatActivity implements Student
     public void goToDetailView(String jsonApplication) {
         //TODO: Form Detail View need to be completed
         Intent intent = new Intent(this, ApplicationDetailActivity.class);
-        intent.putExtra(Constant.TYPE_KEY, Constant.STUDENT_VAL);
+        if (isStaff){
+            intent.putExtra(Constant.TYPE_KEY, Constant.STAFF_VAL);
+        }else {
+            intent.putExtra(Constant.TYPE_KEY, Constant.STUDENT_VAL);
+        }
         intent.putExtra(Constant.JSON_APPLICATION_KEY, jsonApplication);
         startActivity(intent);
     }

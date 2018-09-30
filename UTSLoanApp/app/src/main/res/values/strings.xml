@@ -142,5 +142,9 @@
     <string name="all_application_forms">All Application Forms</string>
     <string name="title_activity_staff_all_forms">StaffAllFormsActivity</string>
     <string name="search">Search...</string>
+    <string name="start_review_msg">You just started to review an application form, go to your forms to check it</string>
+    <string name="declare">Declare</string>
+    <string name="start_review_conform_msg">Once you start review, you will be responsible for this application form, which cannot be changed in the future, are you sure?</string>
+    <string name="cancel_application_msg">You have just cancelled an application</string>
 
 </resources>

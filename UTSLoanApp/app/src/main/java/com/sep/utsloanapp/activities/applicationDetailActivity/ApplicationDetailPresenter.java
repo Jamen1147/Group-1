@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
+import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.utils.Constant;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
@@ -97,7 +98,25 @@ public class ApplicationDetailPresenter implements ApplicationDetailContract.Pre
         //Update student availability to submit
         String uid = application.getStudentUid();
         mDatabaseHelper.updateUserAvailability(uid, Constant.ENABLE_VAL);
-        mView.onCancelFinished();
+
+        mView.finishViewWithMsg(mContext.getResources().getString(R.string.cancel_application_msg));
+    }
+
+    @Override
+    public void startReviewForm(Application application) {
+        String uid = mAuthHelper.getUid();
+
+        application.setStaffUid(uid);
+        application.setStatus(Constant.FORM_STATUS_IN_PROCESS);
+
+        mDatabaseHelper.saveObject(application);
+
+        mView.finishViewWithMsg(mContext.getResources().getString(R.string.start_review_msg));
+    }
+
+    @Override
+    public void startDeclareForm(Application application) {
+
     }
 
 }
