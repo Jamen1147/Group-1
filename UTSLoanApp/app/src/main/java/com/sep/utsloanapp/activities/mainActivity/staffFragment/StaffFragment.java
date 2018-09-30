@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.staffAllFormsActivity.StaffAllFormsActivity;
+import com.sep.utsloanapp.activities.studentMyFormsActivity.StudentMyFormsActivity;
+import com.sep.utsloanapp.activities.utils.Constant;
 
 import org.w3c.dom.Text;
 
@@ -65,6 +67,9 @@ public class StaffFragment extends Fragment implements StaffContract.View, View.
         }
         if (view == mMyForm_tv){
             //go to my reviewing forms activity with a string extra called 'staff_reviewing'
+            Intent intent = new Intent(getActivity(), StudentMyFormsActivity.class);
+            intent.putExtra(Constant.TYPE_KEY, Constant.STAFF_VAL);
+            startActivity(intent);
         }
     }
 

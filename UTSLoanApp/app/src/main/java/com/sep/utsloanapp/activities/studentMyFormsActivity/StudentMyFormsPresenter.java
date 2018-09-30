@@ -61,7 +61,7 @@ public class StudentMyFormsPresenter implements StudentMyFormsContract.Presenter
     }
 
     @Override
-    public void getFormsData() {
+    public void getFormsData(final int type) {
         mDatabaseHelper.retrieveApplicationData(new DatabaseHelper.OnGetDataListener() {
             @Override
             public void onStart() {
@@ -72,15 +72,21 @@ public class StudentMyFormsPresenter implements StudentMyFormsContract.Presenter
             public void onSuccessful(DataSnapshot dataSnapshot) {
                 String uid = mAuthHelper.getUid();
                 mApplications.clear();
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Application application = ds.getValue(Application.class);
-                    if (application != null){
-                        if (application.getStudentUid().equals(uid)) {
-                            mApplications.add(application);
+                    if (application != null) {
+                        if (type == Constant.STAFF_VAL) {
+                            //staff
+                            if (application.getStaffUid().equals(uid))
+                                mApplications.add(application);
+                        }else {
+                            //student
+                            if (application.getStudentUid().equals(uid))
+                                mApplications.add(application);
                         }
                     }
+                    mView.onGetFormSuccessful(mApplications);
                 }
-                mView.onGetFormSuccessful(mApplications);
             }
 
             @Override
@@ -89,6 +95,7 @@ public class StudentMyFormsPresenter implements StudentMyFormsContract.Presenter
             }
         });
     }
+
 
     @Override
     public void goToItemDetail(Application application) {

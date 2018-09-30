@@ -40,7 +40,8 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
     private TextView mAmount_tv, mUsage_tv, mOtherUsage_tv, mLoanPeriod_tv, mRepayment_tv,
             mBsb_tv, mAccountNum_tv, mStudentName_tv, mStudentId_tv;
 
-    private boolean hasStudent, hasApplication, isStudent, isStaff;
+    private boolean hasStudent, hasApplication, isStudent, isStaff, isInProcess;
+
     private Student mStudent = new Student();
     private Application mApplication = new Application();
 
@@ -156,6 +157,24 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
     private void startReviewApplication() {
         if (isStaff){
             //TODO: Review Function
+            if (isInProcess){
+                //is in process --- then start to declare
+            }else {
+                //submitted --- then start to review
+                Utils.showConfirmDialog(this,
+                        getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                        getString(R.string.confirmation),
+                        getString(R.string.start_review_conform_msg),
+                        getString(R.string.not_sure),
+                        getString(R.string.i_am_sure),
+                        new Callable<Void>() {
+                            @Override
+                            public Void call() {
+                                mPresenter.startReviewForm(mApplication);
+                                return null;
+                            }
+                        });
+            }
         }
     }
 
@@ -186,8 +205,12 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
             isStudent = true;
         }
         else if (userType == Constant.STAFF_VAL){
-            mReview_btn.setVisibility(View.VISIBLE);
             isStaff = true;
+            mReview_btn.setVisibility(View.VISIBLE);
+            if (!application.getStatus().equals(Constant.FORM_STATUS_SUBMITTED)){
+                mReview_btn.setText(R.string.declare);
+                isInProcess = true;
+            }
         }
 
         mApplication = application;
@@ -223,7 +246,8 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
     }
 
     @Override
-    public void onCancelFinished() {
+    public void finishViewWithMsg(String msg) {
+        Utils.showMsg(this, msg);
         onBackPressed();
     }
 }

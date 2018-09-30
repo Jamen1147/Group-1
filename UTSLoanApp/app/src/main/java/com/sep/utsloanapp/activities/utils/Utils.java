@@ -112,4 +112,9 @@ public class Utils {
         });
 
     }
+
+    public static void sendEmail(String to, String subject, String msg){
+        Email email = new Email(to, subject, msg);
+        email.execute();
+    }
 }

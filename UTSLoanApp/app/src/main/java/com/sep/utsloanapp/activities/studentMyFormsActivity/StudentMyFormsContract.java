@@ -19,7 +19,13 @@ public interface StudentMyFormsContract {
 
     interface Presenter extends BasePresenter{
         void logout();
-        void getFormsData();
+
+        //check type, if student, call get form successful and pass the student's form
+        //if staff, pass staff form
+        void getFormsData(int type);
+
+        //turn application into json and call goToEdit() or goToDetail() based on the status..
+        //if submitted go edit, otherwise go detail
         void goToItemDetail(Application application);
     }
 
