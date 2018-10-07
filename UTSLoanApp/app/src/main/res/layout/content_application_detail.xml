@@ -18,9 +18,18 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/text_view_shadow"
+                android:elevation="10dp"
+                android:id="@+id/ref_re"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -50,7 +59,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/text_view_boarder_grey"
+                android:background="@drawable/text_view_shadow"
+                android:elevation="20dp"
                 android:layout_below="@id/note"
                 >
 
@@ -139,20 +149,20 @@
 
                 </LinearLayout>
             </LinearLayout>
+            </RelativeLayout>
+
 
             <!--loan-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/create_form_loan_form_linear"
-                android:layout_below="@id/create_form_personal_information_liner_2"
+                android:layout_below="@id/ref_re"
+                android:layout_margin="10dp"
+                android:background="@drawable/text_view_shadow"
+                android:elevation="10dp"
                 android:orientation="vertical"
                 >
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -160,8 +170,14 @@
                     android:text="@string/loan_information"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
                     android:layout_gravity="center"
                     android:gravity="center"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@android:color/darker_gray"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -316,13 +332,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@drawable/text_view_shadow"
+                android:elevation="10dp"
+                android:layout_margin="10dp"
                 android:id="@+id/create_form_loan_form_linear_2"
                 android:layout_below="@id/create_form_loan_form_linear">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -330,7 +344,13 @@
                     android:text="@string/back_information"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@android:color/darker_gray"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -387,12 +407,90 @@
                         android:id="@+id/form_detail_account_num_tv" />
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <!--result-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/text_view_shadow"
+                android:elevation="10dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:id="@+id/application_detail_result_detail_lin"
+                android:layout_below="@id/create_form_loan_form_linear_2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Application Result"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"/>
+
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.1dp"
                     android:background="@android:color/darker_gray"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Result: "
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2.5"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/your_bsb"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:id="@+id/form_detail_result_result"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Declare Time: "
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2.5"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/your_account_number"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:id="@+id/form_detail_result_declare_time" />
+                </LinearLayout>
             </LinearLayout>
+
         </RelativeLayout>
 
     </ScrollView>
@@ -401,6 +499,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/colorPrimary"
         android:padding="10dp"
         android:layout_alignParentBottom="true"
         android:id="@+id/form_detail_btn_lin"

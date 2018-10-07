@@ -27,4 +27,8 @@ public class Constant {
     //Availability Code
     public static final int ENABLE_VAL = 1;
     public static final int DISABLE_VAL = 0;
+
+    //Result Code
+    public static final int RESULT_REJECTED = 0;
+    public static final int RESULT_APPROVED = 1;
 }

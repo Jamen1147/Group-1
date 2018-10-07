@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @Override
     public void onGetDataFailed(DatabaseError databaseError) {
         databaseError.toException().printStackTrace();
-        Utils.showMsg(this, "Re-Directing Failed, Please Login Again");
+//        Utils.showMsg(this, "Re-Directing Failed, Please Login Again");
         mPresenter.logout();
     }
 
@@ -149,6 +149,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                     new Callable<Void>() {
                         @Override
                         public Void call() {
+                            startActivity(new Intent(MainActivity.this, LogoPageActivity.class));
+                            finish();
                             mPresenter.logout();
                             Utils.showMsg(getBaseContext(), "Logged Out Successfully");
                             return null;

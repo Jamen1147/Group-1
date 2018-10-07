@@ -1,7 +1,9 @@
 package com.sep.utsloanapp.activities.applicationDetailActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -11,10 +13,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.sep.utsloanapp.R;
 import com.sep.utsloanapp.activities.utils.Constant;
+import com.sep.utsloanapp.activities.utils.Utils;
 import com.sep.utsloanapp.firebaseHelper.AuthHelper;
 import com.sep.utsloanapp.firebaseHelper.DatabaseHelper;
 import com.sep.utsloanapp.models.Application;
 import com.sep.utsloanapp.models.Student;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ApplicationDetailPresenter implements ApplicationDetailContract.Presenter{
 
@@ -103,7 +109,7 @@ public class ApplicationDetailPresenter implements ApplicationDetailContract.Pre
     }
 
     @Override
-    public void startReviewForm(Application application) {
+    public void startReviewForm(Application application, Student student) {
         String uid = mAuthHelper.getUid();
 
         application.setStaffUid(uid);
@@ -111,12 +117,32 @@ public class ApplicationDetailPresenter implements ApplicationDetailContract.Pre
 
         mDatabaseHelper.saveObject(application);
 
+        Utils.sendReviewEmail(application,student);
+
         mView.finishViewWithMsg(mContext.getResources().getString(R.string.start_review_msg));
     }
 
     @Override
-    public void startDeclareForm(Application application) {
+    public void startDeclareForm(Application application, Student student, int resultCode, String rejectReason) {
+        //TODO: set application status and timeDeclared, set application result, set application reject reason if rejected
+        //TODO: update student availability, send email
 
+        application.setStatus(Constant.FORM_STATUS_COMPLETE);
+        application.setResult(resultCode);
+
+        if (resultCode == Constant.RESULT_REJECTED)
+            application.setRejectReason(rejectReason);
+
+        @SuppressLint("SimpleDateFormat")
+        String currentDateAndTime = new SimpleDateFormat(Constant.DATE_TIME_PATTERN).format(new Date());
+        application.setTimeDeclared(currentDateAndTime);
+
+        mDatabaseHelper.saveObject(application);
+        mDatabaseHelper.updateUserAvailability(application.getStudentUid(), Constant.ENABLE_VAL);
+
+        Utils.sendResultEmail(application, student);
+
+        mView.finishViewWithMsg("You have declared a result for an application successfully.");
     }
 
 }
