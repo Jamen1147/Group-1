@@ -183,7 +183,7 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
                                             @Override
                                             public Void call() {
                                                 //confirmed, pop up reject reason dialog
-                                                Utils.showConfirmDialog(ApplicationDetailActivity.this,
+                                                Utils.showRejectReasonDialog(ApplicationDetailActivity.this,
                                                         getLayoutInflater().inflate(R.layout.dialog_reject_reason, null),
                                                         getString(R.string.reject_reason),
                                                         getString(R.string.enter_reason_msg),

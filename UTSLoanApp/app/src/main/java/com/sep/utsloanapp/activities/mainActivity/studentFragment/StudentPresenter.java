@@ -51,7 +51,12 @@ public class StudentPresenter implements StudentContract.Presenter{
 
                 @Override
                 public void onSuccessful(DataSnapshot dataSnapshot) {
-                    String uid = mAuthHelper.getUid();
+                    String uid = "";
+
+                    if (mAuthHelper.getUid() != null){
+                        uid = mAuthHelper.getUid();
+                    }
+
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         User user = ds.getValue(User.class);
                         if (user != null) {

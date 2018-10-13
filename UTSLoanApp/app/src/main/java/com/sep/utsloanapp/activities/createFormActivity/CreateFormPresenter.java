@@ -134,6 +134,7 @@ public class CreateFormPresenter implements CreateFormContract.Presenter{
 
         application.setStudentUid(uid);
         mDatabaseHelper.saveObject(application);
+
         //disable
         mDatabaseHelper.updateUserAvailability(uid, Constant.DISABLE_VAL);
         mView.onSaveFinished("Saved");
