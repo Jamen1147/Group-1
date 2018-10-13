@@ -27,7 +27,7 @@
     <string name="staff_id">Staff ID</string>
     <string name="no_access_to_staff_err_msg">You DO NOT have the access to Staff system</string>
     <string name="no_access_to_Student_err_msg">You DO NOT have access to Student system</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="login_help_text">For login problems, \n please direct to UTS Online</string>
     <string name="ok_button_text">OK</string>
     <string name="logout">Logout</string>
@@ -42,7 +42,7 @@
     <string name="guidance">Guidance</string>
     <string name="application_forms">Application Forms</string>
     <string name="my_reviewing_forms">My Reviewing Forms</string>
-    <string name="title_activity_create_form">CreateFormActivity</string>
+    <string name="title_activity_create_form">Create Form</string>
     <string name="create_form_note_string"><![CDATA[*Note: Your click the -> button to check your personal information before submitting the form]]></string>
     <string name="personal_inforamtion">Personal Information</string>
     <string name="name">Name:</string>
@@ -59,7 +59,7 @@
     <string name="select_year">Select Year</string>
     <string name="repayment_months">Repayment Months:</string>
     <string name="select_months">Select Months</string>
-    <string name="back_information">Back Information</string>
+    <string name="back_information">Bank Information</string>
     <string name="bsb">BSB:</string>
     <string name="your_bsb">Your BSB</string>
     <string name="account_num">Account Num:</string>
@@ -122,29 +122,37 @@
         <item>54 Months</item>
         <item>60 Months</item>
     </string-array>
-    <string name="title_activity_student_my_forms">StudentMyFormsActivity</string>
-    <string name="title_activity_student_personal_detail">StudentPersonalDetailActivity</string>
+    <string name="title_activity_student_my_forms">My Forms</string>
+    <string name="title_activity_student_personal_detail">Personal Detail</string>
     <string name="help">Help</string>
     <string name="form_more_than_one_error_msg">You\'ve already got one form in editing or in process, please go to \'my forms\' to check it</string>
     <string name="reminder">Reminder</string>
     <string name="confirmation">Confirmation</string>
     <string name="to_be_submitted">To be submitted</string>
     <string name="to_be_issued">To be issued</string>
-    <string name="title_activity_application_detail">ApplicationDetailActivity</string>
+    <string name="title_activity_application_detail">Application Detail</string>
     <string name="please_click_the_for_student_s_personal_information"><![CDATA[Please click the \' --> \' for student\'s personal information]]></string>
     <string name="back">Back</string>
     <string name="start_review">Start Review</string>
-    <string name="cannot_cancel_application_submission">You cannot cancel this application because it has been in process</string>
+    <string name="cannot_cancel_application_submission">You cannot cancel this application because it has been in process or has completed.</string>
     <string name="not_cancel_submission">Your application is waiting to be reviewed, are you sure you want to cancel this submission?</string>
     <string name="i_am_sure">I am sure</string>
-    <string name="title_activity_guide">GuideActivity</string>
+    <string name="title_activity_guide">Guide</string>
     <string name="guidance_pop_up_msg">UTS Student Loan Application System Guidance Will Help You Go Through Every Aspect of The Application Form</string>
     <string name="all_application_forms">All Application Forms</string>
-    <string name="title_activity_staff_all_forms">StaffAllFormsActivity</string>
+    <string name="title_activity_staff_all_forms">All Forms</string>
     <string name="search">Search...</string>
     <string name="start_review_msg">You just started to review an application form, go to your forms to check it</string>
     <string name="declare">Declare</string>
     <string name="start_review_conform_msg">Once you start review, you will be responsible for this application form, which cannot be changed in the future, are you sure?</string>
     <string name="cancel_application_msg">You have just cancelled an application</string>
+    <string name="two_pick_one_msg">Please choose your answer very carefully</string>
+    <string name="reject">Reject</string>
+    <string name="approve">Approve</string>
+    <string name="declared_result_confirm_msg">Once you have declared the result, it cannot be changed in the future, are you sure?</string>
+    <string name="enter_reason_msg">Please enter the reject reason in the text field below</string>
+    <string name="reject_reason">Reject Reason</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
 
 </resources>

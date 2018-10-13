@@ -33,17 +33,19 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
     private ImageView mArrowImage;
     private Button mBack_btn, mReview_btn, mCancel_btn;
 
-    private LinearLayout mNameIdLinear, mOtherLinear, mBtnsLinear;
+    private LinearLayout mNameIdLinear, mOtherLinear, mBtnsLinear, mResultLinear;
     private ScrollView mScrollView;
     private ProgressBar mProgressBar;
 
     private TextView mAmount_tv, mUsage_tv, mOtherUsage_tv, mLoanPeriod_tv, mRepayment_tv,
-            mBsb_tv, mAccountNum_tv, mStudentName_tv, mStudentId_tv;
+            mBsb_tv, mAccountNum_tv, mStudentName_tv, mStudentId_tv, mApplicationResult_tv, mApplicationTimeDelared;
 
     private boolean hasStudent, hasApplication, isStudent, isStaff, isInProcess;
 
     private Student mStudent = new Student();
     private Application mApplication = new Application();
+
+    private String mRejectReason = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,9 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
         mCancel_btn = findViewById(R.id.form_detail_cancel_btn);
         mBtnsLinear = findViewById(R.id.form_detail_btn_lin);
         mScrollView = findViewById(R.id.form_detail_scrollView);
+        mResultLinear = findViewById(R.id.application_detail_result_detail_lin);
+        mApplicationResult_tv = findViewById(R.id.form_detail_result_result);
+        mApplicationTimeDelared = findViewById(R.id.form_detail_result_declare_time);
     }
 
     @Override
@@ -159,6 +164,63 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
             //TODO: Review Function
             if (isInProcess){
                 //is in process --- then start to declare
+                Utils.showTwoPickOneDialog(this, getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                        getString(R.string.confirmation),
+                        getString(R.string.two_pick_one_msg),
+                        getString(R.string.reject),
+                        getString(R.string.approve),
+                        new Callable<Void>() {
+                            @Override
+                            public Void call(){
+                                //rejected, pop up confirm dialog
+                                Utils.showConfirmDialog(ApplicationDetailActivity.this,
+                                        getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                                        getString(R.string.confirmation),
+                                        getString(R.string.declared_result_confirm_msg),
+                                        getString(R.string.not_sure),
+                                        getString(R.string.i_am_sure),
+                                        new Callable<Void>() {
+                                            @Override
+                                            public Void call() {
+                                                //confirmed, pop up reject reason dialog
+                                                Utils.showConfirmDialog(ApplicationDetailActivity.this,
+                                                        getLayoutInflater().inflate(R.layout.dialog_reject_reason, null),
+                                                        getString(R.string.reject_reason),
+                                                        getString(R.string.enter_reason_msg),
+                                                        getString(R.string.cancel),
+                                                        getString(R.string.ok_button_text),
+                                                        new Callable<Void>() {
+                                                            @Override
+                                                            public Void call() {
+                                                                mPresenter.startDeclareForm(mApplication, mStudent, Constant.RESULT_REJECTED, mRejectReason);
+                                                                return null;
+                                                            }
+                                                        });
+                                                return null;
+                                            }
+                                        });
+                                return null;
+                            }
+                        }, new Callable<Void>() {
+                            @Override
+                            public Void call(){
+                                //approved, pop up confirm dialog
+                                Utils.showConfirmDialog(ApplicationDetailActivity.this,
+                                        getLayoutInflater().inflate(R.layout.dialog_confirm_dialog, null),
+                                        getString(R.string.confirmation),
+                                        getString(R.string.declared_result_confirm_msg),
+                                        getString(R.string.not_sure),
+                                        getString(R.string.i_am_sure),
+                                        new Callable<Void>() {
+                                            @Override
+                                            public Void call() {
+                                                mPresenter.startDeclareForm(mApplication, mStudent, Constant.RESULT_APPROVED, mRejectReason);
+                                                return null;
+                                            }
+                                        });
+                                return null;
+                            }
+                        });
             }else {
                 //submitted --- then start to review
                 Utils.showConfirmDialog(this,
@@ -170,7 +232,7 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
                         new Callable<Void>() {
                             @Override
                             public Void call() {
-                                mPresenter.startReviewForm(mApplication);
+                                mPresenter.startReviewForm(mApplication, mStudent);
                                 return null;
                             }
                         });
@@ -200,21 +262,42 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
         mBsb_tv.setText(application.getBankBsb());
         mAccountNum_tv.setText(application.getBankAccount());
 
+        mApplication = application;
+        hasApplication = true;
+
         if (userType == Constant.STUDENT_VAL){
             mCancel_btn.setVisibility(View.VISIBLE);
             isStudent = true;
+            if (application.getStatus().equals(Constant.FORM_STATUS_IN_PROCESS)){
+                isInProcess = true;
+            }else if (application.getStatus().equals(Constant.FORM_STATUS_COMPLETE)){
+                mResultLinear.setVisibility(View.VISIBLE);
+                mApplicationTimeDelared.setText(mApplication.getTimeDeclared());
+                Log.d("Time declared = ", " --- " + mApplication.getTimeDeclared());
+                Log.d("Time submitted = ", " --- " + mApplication.getTimeSubmitted());
+                Log.d("Result = ", " --- " + mApplication.getResult());
+                if (mApplication.getResult() == Constant.RESULT_APPROVED)
+                    mApplicationResult_tv.setText(getResources().getString(R.string.approved));
+                else if (mApplication.getResult() == Constant.RESULT_REJECTED)
+                    mApplicationResult_tv.setText(getResources().getString(R.string.rejected));
+            }
         }
         else if (userType == Constant.STAFF_VAL){
             isStaff = true;
             mReview_btn.setVisibility(View.VISIBLE);
-            if (!application.getStatus().equals(Constant.FORM_STATUS_SUBMITTED)){
+            if (application.getStatus().equals(Constant.FORM_STATUS_IN_PROCESS)){
                 mReview_btn.setText(R.string.declare);
                 isInProcess = true;
+            }else if (application.getStatus().equals(Constant.FORM_STATUS_COMPLETE)){
+                mReview_btn.setVisibility(View.GONE);
+                mResultLinear.setVisibility(View.VISIBLE);
+                mApplicationTimeDelared.setText(mApplication.getTimeDeclared());
+                if (mApplication.getResult() == Constant.RESULT_APPROVED)
+                    mApplicationResult_tv.setText(getResources().getString(R.string.approved));
+                else if (mApplication.getResult() == Constant.RESULT_REJECTED)
+                    mApplicationResult_tv.setText(getResources().getString(R.string.rejected));
             }
         }
-
-        mApplication = application;
-        hasApplication = true;
 
         mPresenter.getStudentInfo(application.getStudentUid());
     }
@@ -249,5 +332,9 @@ public class ApplicationDetailActivity extends AppCompatActivity implements Appl
     public void finishViewWithMsg(String msg) {
         Utils.showMsg(this, msg);
         onBackPressed();
+    }
+
+    public void setReason(String reason){
+        mRejectReason = reason;
     }
 }

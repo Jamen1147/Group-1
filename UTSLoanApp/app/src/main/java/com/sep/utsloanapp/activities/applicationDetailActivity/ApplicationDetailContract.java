@@ -22,14 +22,18 @@ public interface ApplicationDetailContract {
 
     interface Presenter extends BasePresenter{
         void logout();
+
+        //Json to Object, then call mView.setContent()
         void unwrapApplicationData(Bundle extra);
+
         void getStudentInfo(String uid);
+
         void cancelApplicationSubmission(Application application);
 
         //staff clicked start review, set staffUid as the current uid, set status, save to database
-        //then tell the view to finish
-        void startReviewForm(Application application);
+        //then pass the application and student to Utils.sendReviewEmail(app, stud), then tell the view to finish
+        void startReviewForm(Application application, Student student);
 
-        void startDeclareForm(Application application);
+        void startDeclareForm(Application application, Student student, int resultCode, String rejectReason);
     }
 }
